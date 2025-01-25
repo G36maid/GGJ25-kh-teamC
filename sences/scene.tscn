@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://csphcir62ntax"]
 
 [ext_resource type="Texture2D" uid="uid://dfakj7qw2kxe2" path="res://assets/背景設計_工作區域 1.png" id="1_tk3ja"]
-[ext_resource type="Texture2D" uid="uid://bkar6h2d7g7q0" path="res://assets/背景設計-03.png" id="2_6gs4s"]
+[ext_resource type="PackedScene" uid="uid://sv0odi5y138b" path="res://sences/alien.tscn" id="2_ry0k1"]
 [ext_resource type="Texture2D" uid="uid://dx4kttshmisv3" path="res://assets/背景設計-06.png" id="4_lymkf"]
 [ext_resource type="Texture2D" uid="uid://cvmct4wis7j8f" path="res://assets/背景設計-04.png" id="5_5qlin"]
 [ext_resource type="Texture2D" uid="uid://dheyeo7v1w8wc" path="res://assets/背景設計-05.png" id="6_gfq21"]
@@ -17,15 +17,11 @@ size = Vector2(1000, 2000)
 position = Vector2(10, -6)
 texture = ExtResource("1_tk3ja")
 
-[node name="背景設計-03" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.568627)
-position = Vector2(499, 393)
-texture = ExtResource("2_6gs4s")
+[node name="Alien0" parent="." instance=ExtResource("2_ry0k1")]
+position = Vector2(442, 393)
 
-[node name="背景設計-03-1製" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.564706)
-position = Vector2(661, 393)
-texture = ExtResource("2_6gs4s")
+[node name="Alien1" parent="." instance=ExtResource("2_ry0k1")]
+position = Vector2(695, 393)
 
 [node name="背景設計-06" type="Sprite2D" parent="."]
 z_index = 1
