@@ -4,6 +4,8 @@ extends Node2D
 @export var ally_scene: PackedScene
 @export var enemy_scene: PackedScene
 @export var headquarter_scene: PackedScene
+@export var radar_scene: PackedScene
+
 const LAN = 5
 const DILIVERER_COUNT = 5
 var deliverers := []
@@ -48,7 +50,11 @@ func _start() -> void:
 		)
 		ally.name = "ally" + str(i)
 		$allys.add_child(ally)
-		
+	
+	var radar := radar_scene.instantiate()
+	radar.position = hq_position
+	add_child(radar)
+
 	headquarter = headquarter_scene.instantiate()
 	headquarter.name = "hq"
 	headquarter.position = hq_position
@@ -66,10 +72,10 @@ func _process(delta: float) -> void:
 		return
 		
 	$enemy_remain.text = """Enemy Remain: %d
-Food: %d
-Ammo: %d
-Metal: %d
-""" % [remain_enemy, headquarter.resource_food, 
+Food:%d
+Ammo:%d
+Metal:%d
+""" % [remain_enemy, headquarter.resource_food,
 	headquarter.resource_ammo, headquarter.resource_metal]
 
 
@@ -89,7 +95,7 @@ func _on_enemy_timer_timeout() -> void:
 func send_commands_to_deliverer(commands: Array) -> bool:
 	for d in deliverers:
 		if d.set_commands(commands):
-		    return true
+			return true
 	return false
 	
 func get_x(lan: int) -> int:
