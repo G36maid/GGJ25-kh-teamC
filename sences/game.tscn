@@ -1,26 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbn1jf8gr4l4n"]
+[gd_scene load_steps=7 format=3 uid="uid://bbn1jf8gr4l4n"]
 
-[ext_resource type="PackedScene" path="res://emeny.tscn" id="1_npdpo"]
-[ext_resource type="PackedScene" path="res://ally.tscn" id="2_u3dge"]
-[ext_resource type="PackedScene" uid="uid://cq1uqy08p4gvf" path="res://deliverer.tscn" id="3_m50hj"]
-[ext_resource type="Script" path="res://scripts/deliverer.gd" id="4_d1j87"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_bdvao"]
+[ext_resource type="PackedScene" uid="uid://cvp5d6dyf8mrw" path="res://sences/emeny.tscn" id="1_npdpo"]
+[ext_resource type="PackedScene" uid="uid://biabod8sfbms8" path="res://sences/ally.tscn" id="2_u3dge"]
+[ext_resource type="PackedScene" uid="uid://33dtqel1p2j5" path="res://sences/deliverer.tscn" id="3_m50hj"]
 [ext_resource type="PackedScene" uid="uid://dtmmnn2yh6702" path="res://sences/radar.tscn" id="4_xu7sx"]
+[ext_resource type="PackedScene" uid="uid://bsjo3u7jlotpr" path="res://sences/headquarter.tscn" id="5_aywmw"]
 
 [node name="game" type="Node2D"]
-
-[node name="enemys" type="Node" parent="."]
-
-[node name="Node2D" parent="enemys" instance=ExtResource("1_npdpo")]
-
-[node name="allys" type="Node" parent="."]
-
-[node name="ally" parent="allys" instance=ExtResource("2_u3dge")]
-
-[node name="deliverers" type="Node" parent="."]
-
-[node name="deliverer" parent="deliverers" instance=ExtResource("3_m50hj")]
-script = ExtResource("4_d1j87")
+script = ExtResource("1_bdvao")
+deliverer_scene = ExtResource("3_m50hj")
+ally_scene = ExtResource("2_u3dge")
+enemy_scene = ExtResource("1_npdpo")
+headquarter_scene = ExtResource("5_aywmw")
 
 [node name="radar" parent="." instance=ExtResource("4_xu7sx")]
 
 [node name="board" type="Node" parent="."]
+
+[node name="EnemyTimer" type="Timer" parent="."]
+
+[node name="enemys" type="Node" parent="."]
+
+[node name="allys" type="Node" parent="."]
+
+[node name="deliverers" type="Node" parent="."]
+
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
