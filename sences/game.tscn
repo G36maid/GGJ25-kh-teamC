@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bbn1jf8gr4l4n"]
 
-[ext_resource type="PackedScene" uid="uid://cte6s4lqu6vg2" path="res://emeny.tscn" id="1_npdpo"]
-[ext_resource type="PackedScene" uid="uid://b6cel5j4pk3c4" path="res://ally.tscn" id="2_u3dge"]
-[ext_resource type="PackedScene" uid="uid://da41yv3gdg54l" path="res://deliverer.tscn" id="3_m50hj"]
+[ext_resource type="PackedScene" path="res://emeny.tscn" id="1_npdpo"]
+[ext_resource type="PackedScene" path="res://ally.tscn" id="2_u3dge"]
+[ext_resource type="PackedScene" path="res://deliverer.tscn" id="3_m50hj"]
 [ext_resource type="PackedScene" uid="uid://dtmmnn2yh6702" path="res://sences/radar.tscn" id="4_xu7sx"]
 
 [node name="game" type="Node2D"]
