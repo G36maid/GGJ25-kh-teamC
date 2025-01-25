@@ -1,7 +1,7 @@
-[gd_scene load_steps=559 format=3 uid="uid://csphcir62ntax"]
+[gd_scene load_steps=9 format=3 uid="uid://b8rcbbuf1b2co"]
 
 [ext_resource type="Texture2D" uid="uid://dfakj7qw2kxe2" path="res://assets/背景設計_工作區域 1.png" id="1_tk3ja"]
-[ext_resource type="PackedScene" uid="uid://sv0odi5y138b" path="res://sences/alien.tscn" id="2_ry0k1"]
+[ext_resource type="PackedScene" path="res://sences/alien.tscn" id="2_ry0k1"]
 [ext_resource type="Texture2D" uid="uid://dx4kttshmisv3" path="res://assets/背景設計-06.png" id="4_lymkf"]
 [ext_resource type="Texture2D" uid="uid://cvmct4wis7j8f" path="res://assets/背景設計-04.png" id="5_5qlin"]
 [ext_resource type="Texture2D" uid="uid://dheyeo7v1w8wc" path="res://assets/背景設計-05.png" id="6_gfq21"]
