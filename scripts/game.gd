@@ -37,6 +37,10 @@ func _start() -> void:
 	$start_button.hide()
 	$enemy_timer.start()
 	$txt_input.show()
+
+	$txt_input/sender.text_changed.connect($Background/Alien0.shake)
+	$txt_input/sender.text_changed.connect($Background/Alien1.shake)
+
 	state = State.Start
 	
 	var hq_position = Vector2(
@@ -80,9 +84,9 @@ func _process(delta: float) -> void:
 		$txt_input.hide()
 		return
 
-	if $allys.get_child_count()>0:
+	if $allys.get_child_count() > 0:
 		for _dead_ally in $allys.get_children():
-			if _dead_ally.health <=0:
+			if _dead_ally.health <= 0:
 				state = State.End
 				$lose_text.show()
 				return
