@@ -29,15 +29,13 @@ func _input(event: InputEvent) -> void:
 
 func parse_cmds(new_cmds: String) -> void:
 	var cmds: PackedStringArray = new_cmds.split("\n")
-	var empty_cmd_idx: int = cmds.find("") | cmds.find("\n");
+	var empty_cmd_idx: int = cmds.find("") 
 	var parsed_cmds: Array[PackedStringArray]
 	while (empty_cmd_idx != -1):
 		print("remove empty string")
 		cmds.remove_at(empty_cmd_idx);
-		cmds.resize(cmds.size() - 1)
-		empty_cmd_idx = cmds.find("") | cmds.find("\n")
+		empty_cmd_idx = cmds.find("")
 
-	var invalid_cmd_indices: Array[int];
 	for i in cmds.size():
 		if (ret_ptn.search(cmds[i])):
 			print("return at %d"%i)
@@ -52,6 +50,5 @@ func parse_cmds(new_cmds: String) -> void:
 			print("drop at %d"%i)
 			parsed_cmds.append(spc_ptn.sub(cmds[i].strip_edges(), " ", true).rsplit(" ", true, 2))
 		else:
-			invalid_cmd_indices.append(i)
 			print("no match at %d" % i)
 	print(parsed_cmds)
