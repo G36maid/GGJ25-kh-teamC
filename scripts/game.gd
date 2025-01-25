@@ -29,9 +29,11 @@ func _ready() -> void:
 			get_x(i),
 			randf_range(y_size * 0.5, y_size * 0.8)
 		)
+		ally.name = "ally" + str(i)
 		$allys.add_child(ally)
 		
 	var hq = headquarter_scene.instantiate()
+	hq.name = "hq"
 	hq.position = hq_position
 	add_child(hq)
 
@@ -58,4 +60,3 @@ func send_command_to_deliverers(commands: Array) -> void:
 func get_x(lan: int) -> int:
 	var lan_width = get_viewport_rect().size.x / 2 / LAN
 	return lan_width * lan + lan_width / 2
-	
