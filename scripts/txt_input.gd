@@ -19,7 +19,7 @@ func _ready() -> void:
 	
 	var actions:PackedStringArray = ["return", "goto", "grab", "drop"]
 	var resources:PackedStringArray = ["food", "ammo", "metal"]
-	var locations:PackedStringArray = ["ally1", "ally1", "ally2", "ally3", "ally4", "hq"]
+	var locations:PackedStringArray = ["ally0", "ally1", "ally2", "ally3", "ally4", "hq"]
 	for str in actions:
 		highlighter.add_keyword_color(str, Color(0.9, 0.669, 0.657))
 	for str in resources:
