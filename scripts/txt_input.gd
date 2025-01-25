@@ -1,6 +1,7 @@
 extends TextEdit
 
 var nxtCmd=""
+
 #onready var other_text_edit = 
 @export var otherTextEdit:TextEdit = null
 # Called when the node enters the scene tree for the first time.

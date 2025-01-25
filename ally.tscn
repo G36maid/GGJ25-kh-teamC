@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://da41yv3gdg54l"]
+[gd_scene format=3 uid="uid://b6cel5j4pk3c4"]
 
-[node name="deliverer" type="Node2D"]
+[node name="ally" type="Node2D"]
 
 [node name="Area2D" type="Area2D" parent="."]
 
