@@ -6,9 +6,13 @@ var resource_metal: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	$hq_timer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func _on_hq_timer_timeout() -> void:
+	resource_food += 1
+	resource_ammo += 1
+	resource_metal += 1

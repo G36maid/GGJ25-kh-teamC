@@ -49,8 +49,5 @@ text = "You Win!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="hq_timer" type="Timer" parent="."]
-
 [connection signal="timeout" from="enemy_timer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="pressed" from="start_button" to="." method="_start"]
-[connection signal="timeout" from="hq_timer" to="." method="_on_hq_timer_timeout"]

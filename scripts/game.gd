@@ -28,7 +28,6 @@ func _start() -> void:
 	remain_enemy = 10
 	$start_button.hide()
 	$enemy_timer.start()
-	$hq_timer.start()
 	state = State.Start
 	
 	var hq_position = Vector2(
@@ -95,9 +94,3 @@ func send_command_to_deliverers(commands: Array) -> void:
 func get_x(lan: int) -> int:
 	var lan_width = get_viewport_rect().size.x / 2 / LAN
 	return lan_width * lan + lan_width / 2
-
-
-func _on_hq_timer_timeout() -> void:
-	headquarter.resource_food += 1
-	headquarter.resource_ammo += 1
-	headquarter.resource_metal += 1
