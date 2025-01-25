@@ -1,7 +1,16 @@
-[gd_scene format=3 uid="uid://dtmmnn2yh6702"]
+[gd_scene load_steps=2 format=3 uid="uid://dtmmnn2yh6702"]
+
+[ext_resource type="Script" path="res://scripts/radar.gd" id="1_uvhhb"]
 
 [node name="radar" type="Node2D"]
+script = ExtResource("1_uvhhb")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, -1200)
+collide_with_areas = true
 
-[node name="RayCast2D" type="RayCast2D" parent="Sprite2D"]
+[node name="Line2D" type="Line2D" parent="RayCast2D"]
+z_index = 15
+points = PackedVector2Array(0, 0, 0, -1200)
+width = 2.0
+default_color = Color(0.572932, 0.93639, 0.428768, 1)
