@@ -24,4 +24,8 @@ func _process(delta: float) -> void:
 	if(resource_ammo > 0 and raycast.is_colliding() ):
 		var target = raycast.get_collider()
 		print(target)
-	pass
+		
+	$Label.text = """Food: %d
+Ammo: %d
+Metal: %d
+""" % [resource_food, resource_ammo, resource_metal]
