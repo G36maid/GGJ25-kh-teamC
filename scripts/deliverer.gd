@@ -3,6 +3,8 @@ extends Node2D
 
 @export var speed: int = 10
 
+@onready var ally_parent = $/root/game/allys
+
 enum State {
 	Idle,
 	Duty,
@@ -62,17 +64,7 @@ func exec_command(command: PackedStringArray) -> State:
 func exec_goto(command: PackedStringArray) -> State:
 	var target: String = command[1]
 	# TODO: convert target to pos
-	var target_pos := position
-	match target:
-		"ally1":
-			target_pos = Vector2(100, 100)
-		"ally2":
-			target_pos = Vector2(200, 200)
-		"hq":
-			target_pos = Vector2(0, 0)
-		_:
-			printerr("Unknown target: ", target)
-			return State.Idle
+	var target_pos := await _get_target_pos(target)
 
 	while (position - target_pos).length_squared() > 0.01:
 		# TODO: inject params?
@@ -83,6 +75,40 @@ func exec_goto(command: PackedStringArray) -> State:
 	if target == "hq":
 		return State.Idle
 	return State.Duty
+
+func _get_target_pos(target: String) -> Vector2:
+
+	# ally parent is null, fallback to debug position
+	if ally_parent == null:
+		printerr("Ally parent is null.")
+		match target:
+			"ally1":
+				return Vector2(100, 100)
+			"ally2":
+				return Vector2(200, 200)
+			"hq":
+				return Vector2(0, 0)
+			_:
+				printerr("Unknown target: ", target)
+				return position
+	
+	var retry := 5
+	for _i in retry:
+		# find ally by name
+		for ally in ally_parent.get_children():
+			if ally.name == target:
+				return ally.position
+
+		# HACK: hard-coded path
+		var hq := get_node("/root/game/hq")
+		if hq != null and hq.name == target:
+			return hq.position
+
+		await get_tree().process_frame
+	
+	var ally_names := ally_parent.get_children()
+	printerr("Ally not found: ", target, ally_names)
+	return position
 
 func exec_drop(command: PackedStringArray) -> State:
 	var resource: String = command[1]
