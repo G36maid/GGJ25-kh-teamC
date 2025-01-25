@@ -10,6 +10,7 @@ var deliverers := []
 var enemy_start_spawning = false
 var remain_enemy
 var headquarter
+var pass_to_enemy_ally_y := []
 
 enum State {
 	BeforeStart,
@@ -47,6 +48,7 @@ func _start() -> void:
 			randf_range(y_size * 0.5, y_size * 0.8)
 		)
 		ally.name = "ally" + str(i)
+		#pass_to_enemy_ally_y[i] = ally.y
 		$allys.add_child(ally)
 		
 	headquarter = headquarter_scene.instantiate()
@@ -71,15 +73,17 @@ Ammo: %d
 Metal: %d
 """ % [remain_enemy, headquarter.resource_food, 
 	headquarter.resource_ammo, headquarter.resource_metal]
-
+	
+	
 
 func _on_enemy_timer_timeout() -> void:
 	if remain_enemy == 0:
 		$enemy_timer.stop()
 		return
 	var enemy = enemy_scene.instantiate()
+	enemy.lan = randi_range(0, LAN - 1)
 	enemy.position = Vector2(
-		get_x(randi_range(0, LAN - 1)),
+		get_x(enemy.lan),
 		10
 	)
 	$enemys.add_child(enemy)
@@ -89,7 +93,7 @@ func _on_enemy_timer_timeout() -> void:
 func send_commands_to_deliverer(commands: Array) -> bool:
 	for d in deliverers:
 		if d.set_commands(commands):
-		    return true
+			return true
 	return false
 	
 func get_x(lan: int) -> int:
