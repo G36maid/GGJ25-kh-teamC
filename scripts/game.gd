@@ -87,11 +87,10 @@ func _on_enemy_timer_timeout() -> void:
 	remain_enemy -= 1
 	
 func send_commands_to_deliverer(commands: Array) -> bool:
-	var i = 0
-	while i < DILIVERER_COUNT and not deliverers[i].set_commands(commands):
-		i += 1
-		
-	return i < DILIVERER_COUNT
+	for d in deliverers:
+		if d.set_commands(commands):
+		    return true
+	return false
 	
 func get_x(lan: int) -> int:
 	var lan_width = get_viewport_rect().size.x / 2 / LAN
