@@ -37,3 +37,9 @@ func get_damage(damage: int):
 	health -= damage
 	if health <= 0 :
 		print("gameover")
+		print(target)
+		
+	$Label.text = """Food: %d
+Ammo: %d
+Metal: %d
+""" % [resource_food, resource_ammo, resource_metal]
