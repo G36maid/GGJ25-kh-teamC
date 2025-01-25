@@ -4,6 +4,8 @@ extends Node2D
 @export var ally_scene: PackedScene
 @export var enemy_scene: PackedScene
 @export var headquarter_scene: PackedScene
+@export var radar_scene: PackedScene
+
 const LAN = 5
 const DILIVERER_COUNT = 5
 const PANEL_WIDTH = 665
@@ -15,6 +17,7 @@ var deliverers := []
 var enemy_start_spawning = false
 var remain_enemy
 var headquarter
+var pass_to_enemy_ally_y := []
 
 enum State {
 	BeforeStart,
@@ -51,8 +54,13 @@ func _start() -> void:
 			randf_range(ALLY_MIN_Y, ALLY_MAX_Y)
 		)
 		ally.name = "ally" + str(i)
+		#pass_to_enemy_ally_y[i] = ally.y
 		$allys.add_child(ally)
-		
+	
+	var radar := radar_scene.instantiate()
+	radar.position = hq_position
+	add_child(radar)
+
 	headquarter = headquarter_scene.instantiate()
 	headquarter.name = "hq"
 	headquarter.position = hq_position
@@ -74,15 +82,17 @@ Ammo: %d
 Metal: %d
 """ % [headquarter.resource_food, 
 	headquarter.resource_ammo, headquarter.resource_metal]
-
+	
+	
 
 func _on_enemy_timer_timeout() -> void:
 	if remain_enemy == 0:
 		$enemy_timer.stop()
 		return
 	var enemy = enemy_scene.instantiate()
+	enemy.lan = randi_range(0, LAN - 1)
 	enemy.position = Vector2(
-		get_x(randi_range(0, LAN - 1)),
+		get_x(enemy.lan),
 		10
 	)
 	$enemys.add_child(enemy)

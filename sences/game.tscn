@@ -14,8 +14,7 @@ deliverer_scene = ExtResource("3_m50hj")
 ally_scene = ExtResource("2_u3dge")
 enemy_scene = ExtResource("1_npdpo")
 headquarter_scene = ExtResource("5_aywmw")
-
-[node name="radar" parent="." instance=ExtResource("4_xu7sx")]
+radar_scene = ExtResource("4_xu7sx")
 
 [node name="board" type="Node" parent="."]
 
