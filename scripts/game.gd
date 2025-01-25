@@ -35,6 +35,7 @@ func _start() -> void:
 	remain_enemy = 10
 	$start_button.hide()
 	$enemy_timer.start()
+	$txt_input.show()
 	state = State.Start
 	
 	var hq_position = Vector2(
@@ -75,6 +76,7 @@ func _process(delta: float) -> void:
 	if $enemys.get_children().size() == 0 and enemy_start_spawning:
 		state = State.End
 		$win_text.show()
+		$txt_input.hide()
 		return
 		
 	$enemy_remain.text = """Food: %d

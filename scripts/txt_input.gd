@@ -65,3 +65,4 @@ func parse_cmds(new_cmds: String) -> void:
 		else:
 			print("no match at %d" % i)
 	print(parsed_cmds)
+	$/root/game.send_commands_to_deliverer(parsed_cmds)

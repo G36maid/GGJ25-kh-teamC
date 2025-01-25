@@ -1,7 +1,7 @@
 class_name Deliverer
 extends Node2D
 
-@export var speed: int = 10
+@export var speed: int = 30
 
 @onready var ally_parent = $/root/game/allys
 
@@ -19,20 +19,21 @@ var _commands: Array = []
 var _next_target: String = "hq"
 
 func _ready() -> void:
-	set_commands([
-		["grab", "food", "10"],
-		["goto", "ally1"],
-		["goto", "hq"],
-		["grab", "food", "10"],
-		["goto", "ally1"],
-		["drop", "food", "10"],
-		["grab", "ammo", "10"],
-		["goto", "ally2"],
-		["drop", "ammo", "10"],
-		["grab", "metal", "10"],
-		["goto", "hq"],
-		["drop", "metal", "10"], # TODO: can I drop resource to hq?
-	])
+	#set_commands([
+		#["grab", "food", "10"],
+		#["goto", "ally1"],
+		#["goto", "hq"],
+		#["grab", "food", "10"],
+		#["goto", "ally1"],
+		#["drop", "food", "10"],
+		#["grab", "ammo", "10"],
+		#["goto", "ally2"],
+		#["drop", "ammo", "10"],
+		#["grab", "metal", "10"],
+		#["goto", "hq"],
+		#["drop", "metal", "10"], # TODO: can I drop resource to hq?
+	#])
+	pass
 
 func set_commands(commands: Array) -> bool:
 	"""
@@ -43,7 +44,7 @@ func set_commands(commands: Array) -> bool:
 		printerr("Cannot set commands while deliverer is not idle.")
 		return false
 
-	_commands = commands
+	_commands = commands + [["goto", "hq"]]
 	state = State.Duty
 	exec_commands()
 
