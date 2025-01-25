@@ -8,10 +8,28 @@ const LAN = 5
 const DILIVERER_COUNT = 5
 var deliverers := []
 var deliver_index = 0
+var enemy_start_spawning = false
+var remain_enemy
+var headquarter
+
+enum State {
+	BeforeStart,
+	Start,
+	End,
+}
+
+var state: State = State.BeforeStart
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$EnemyTimer.start()
+	pass
+	
+func _start() -> void:
+	remain_enemy = 10
+	$start_button.hide()
+	$enemy_timer.start()
+	state = State.Start
+	
 	var hq_position = Vector2(
 		get_viewport_rect().size.x / 4,
 		get_viewport_rect().size.y * 0.9
@@ -32,26 +50,42 @@ func _ready() -> void:
 		ally.name = "ally" + str(i)
 		$allys.add_child(ally)
 		
-	var hq = headquarter_scene.instantiate()
-	hq.name = "hq"
-	hq.position = hq_position
-	add_child(hq)
+	headquarter = headquarter_scene.instantiate()
+	headquarter.name = "hq"
+	headquarter.position = hq_position
+	add_child(headquarter)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if state != State.Start:
+		return
+		
+	if $enemys.get_children().size() == 0 and enemy_start_spawning:
+		state = State.End
+		$win_text.show()
+		return
+		
+	$enemy_remain.text = """Enemy Remain: %d
+Food: %d
+Ammo: %d
+Metal: %d
+""" % [remain_enemy, headquarter.resource_food, 
+	headquarter.resource_ammo, headquarter.resource_metal]
 
 
 func _on_enemy_timer_timeout() -> void:
+	if remain_enemy == 0:
+		$enemy_timer.stop()
+		return
 	var enemy = enemy_scene.instantiate()
 	enemy.position = Vector2(
 		get_x(randi_range(0, LAN - 1)),
 		10
 	)
-	print(enemy.position)
 	$enemys.add_child(enemy)
-	
+	enemy_start_spawning = true
+	remain_enemy -= 1
 	
 func send_command_to_deliverers(commands: Array) -> void:
 	deliverers[deliver_index].set_commands(commands)
