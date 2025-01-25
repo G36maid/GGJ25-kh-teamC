@@ -10,25 +10,27 @@
 offset_left = 623.0
 offset_top = 142.0
 offset_right = 1307.0
-offset_bottom = 633.0
+offset_bottom = 492.0
 theme_override_colors/background_color = Color(0.0758633, 0.0682, 0.11, 1)
 theme_override_colors/font_color = Color(0.456268, 0.811617, 0.757314, 1)
 theme_override_colors/caret_color = Color(0.732726, 0.758445, 0.897916, 1)
 theme_override_fonts/font = ExtResource("1_ayquh")
+theme_override_font_sizes/font_size = 30
 draw_tabs = true
 draw_spaces = true
 script = ExtResource("1_dpo2m")
 error_reporter = NodePath("../error_reporter")
 
 [node name="error_reporter" type="TextEdit" parent="." node_paths=PackedStringArray("cmd_sender")]
-offset_left = 74.0
-offset_top = 300.0
-offset_right = 641.0
-offset_bottom = 532.0
+offset_left = 623.0
+offset_top = 500.0
+offset_right = 1307.0
+offset_bottom = 732.0
 theme_override_colors/background_color = Color(0.0758633, 0.0682, 0.11, 1)
 theme_override_colors/font_color = Color(0.456268, 0.811617, 0.757314, 1)
 theme_override_colors/caret_color = Color(0.732726, 0.758445, 0.897916, 1)
 theme_override_fonts/font = ExtResource("1_ayquh")
+theme_override_font_sizes/font_size = 25
 draw_tabs = true
 draw_spaces = true
 script = ExtResource("3_5nj36")

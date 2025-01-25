@@ -10,6 +10,7 @@ var spc_ptn  = RegEx.new()
 var highlighter = CodeHighlighter.new()
 
 signal send_invalid_cmd(invalid_cmd)
+signal send_legal_cmd(legal_cmd)
 signal parse_invalid_cmds
 
 func _ready() -> void:
@@ -48,6 +49,7 @@ func parse_cmds(new_cmds: String) -> void:
 	var cmds: PackedStringArray = new_cmds.split("\n")
 	var empty_cmd_idx: int = cmds.find("") 
 	var parsed_cmds: Array[PackedStringArray]
+	var cmd_invalid: bool = false;
 
 	while (empty_cmd_idx != -1):
 		print("remove empty string")
@@ -55,6 +57,7 @@ func parse_cmds(new_cmds: String) -> void:
 		empty_cmd_idx = cmds.find("")
 
 	for i in cmds.size():
+		cmd_invalid = false;
 		if (ret_ptn.search(cmds[i])):
 			# print("return at %d"%i)
 			parsed_cmds.append(cmds[i].strip_edges().rsplit(" ", true, 0))
@@ -68,9 +71,11 @@ func parse_cmds(new_cmds: String) -> void:
 			# print("drop at %d"%i)
 			parsed_cmds.append(spc_ptn.sub(cmds[i].strip_edges(), " ", true).rsplit(" ", true, 2))
 		else:
+			cmd_invalid=true
+		if(cmd_invalid):
 			send_invalid_cmd.emit(cmds[i])
-			#error_reporter.invalid_cmds.append(cmds[i])
-			# print("no match at %d" % i)
+		else:
+			send_legal_cmd.emit(cmds[i])
 	print("Valid cmds: ")
 	print(parsed_cmds)
 	parse_invalid_cmds.emit()
