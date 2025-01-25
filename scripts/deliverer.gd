@@ -22,6 +22,9 @@ func _ready() -> void:
 	set_commands([
 		["grab", "food", "10"],
 		["goto", "ally1"],
+		["goto", "hq"],
+		["grab", "food", "10"],
+		["goto", "ally1"],
 		["drop", "food", "10"],
 		["grab", "ammo", "10"],
 		["goto", "ally2"],
