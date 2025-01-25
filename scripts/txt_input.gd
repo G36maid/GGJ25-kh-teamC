@@ -14,16 +14,6 @@ func _ready() -> void:
 	grab_ptn.compile(r"grab\s*(food|ammo|metal)\s*([0-9]+)\s*$")
 	drop_ptn.compile(r"drop\s*(food|ammo|metal)\s*([0-9]+)\s*$")
 	spc_ptn.compile(r"\s+")
-	var t = "       r      t    e   "
-	var result = spc_ptn.search(t)
-	if (result != null):
-		# print("parsed string$%s^ends" %result.get_string())
-		# print(spc_ptn.sub(t, " ", true))
-		# print(spc_ptn.sub(t, "", true))
-		pass
-	else:
-		print("no match")
-
 	grab_focus()
 
 func _process(delta: float) -> void:
@@ -45,7 +35,7 @@ func parse_cmds(new_cmds: String) -> void:
 		print("remove empty string")
 		cmds.remove_at(empty_cmd_idx);
 		cmds.resize(cmds.size() - 1)
-		empty_cmd_idx = cmds.find("")
+		empty_cmd_idx = cmds.find("") | cmds.find("\n")
 	print("New cmds: %s"%new_cmds)
 
 	var invalid_cmd_indices: Array[int];
@@ -65,8 +55,4 @@ func parse_cmds(new_cmds: String) -> void:
 		else:
 			invalid_cmd_indices.append(i)
 			print("no match at %d" % i)
-	for idx in invalid_cmd_indices:
-		cmds.remove_at(idx)
-		cmds.resize(cmds.size()-1)
-		
 	print(parsed_cmds)
