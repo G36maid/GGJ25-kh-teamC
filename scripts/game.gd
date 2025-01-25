@@ -8,11 +8,11 @@ extends Node2D
 
 const LAN = 5
 const DILIVERER_COUNT = 5
-const PANEL_WIDTH = 665
-const PADDING = 50
-const ALLY_MIN_Y = 300
-const ALLY_MAX_Y = 500
-const HQ_Y = 590
+const PANEL_WIDTH = 1100
+const PADDING = 70
+const ALLY_MIN_Y = 600
+const ALLY_MAX_Y = 800
+const HQ_Y = 988
 var deliverers := []
 var enemy_start_spawning = false
 var remain_enemy
