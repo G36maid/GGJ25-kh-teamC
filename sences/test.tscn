@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhn37ndfd0aw3"]
+
+[ext_resource type="Texture2D" uid="uid://ddwwtok3rvohy" path="res://icon.svg" id="1_hvj41"]
+
+[node name="Test" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+clip_children = 1
+position = Vector2(223.5, 141.5)
+scale = Vector2(2.64844, 1.63281)
+texture = ExtResource("1_hvj41")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(33.8407, 60.8612)
+scale = Vector2(0.65413, 1.02512)
+texture = ExtResource("1_hvj41")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Sprite2D"]
+position = Vector2(-54.3315, -63.2532)
+scale = Vector2(0.585682, 0.686698)
+texture = ExtResource("1_hvj41")

@@ -6,10 +6,10 @@
 [node name="txt_input" type="Node2D"]
 
 [node name="sender" type="TextEdit" parent="." node_paths=PackedStringArray("other_text_edit")]
-offset_left = 721.0
-offset_top = 38.0
-offset_right = 1053.0
-offset_bottom = 561.0
+offset_left = 623.0
+offset_top = 142.0
+offset_right = 1307.0
+offset_bottom = 633.0
 theme_override_colors/background_color = Color(0.0758633, 0.0682, 0.11, 1)
 theme_override_colors/font_color = Color(0.456268, 0.811617, 0.757314, 1)
 theme_override_colors/caret_color = Color(0.732726, 0.758445, 0.897916, 1)
@@ -20,6 +20,7 @@ script = ExtResource("1_dpo2m")
 other_text_edit = NodePath("../receiver")
 
 [node name="receiver" type="TextEdit" parent="."]
+visible = false
 offset_left = 128.0
 offset_top = 427.0
 offset_right = 567.0
