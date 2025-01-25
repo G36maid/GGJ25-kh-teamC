@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b04r6mby3d8vf"]
+[gd_scene load_steps=9 format=3 uid="uid://csphcir62ntax"]
 
 [ext_resource type="Texture2D" uid="uid://dfakj7qw2kxe2" path="res://assets/背景設計_工作區域 1.png" id="1_tk3ja"]
 [ext_resource type="Texture2D" uid="uid://bkar6h2d7g7q0" path="res://assets/背景設計-03.png" id="2_6gs4s"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://dheyeo7v1w8wc" path="res://assets/背景設計-05.png" id="6_gfq21"]
 [ext_resource type="Texture2D" uid="uid://di8fdmj3rvk0b" path="res://assets/背景設計-02.png" id="7_rddte"]
 [ext_resource type="Texture2D" uid="uid://beqov5ccq0240" path="res://assets/背景設計-07.png" id="8_frreq"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yqhfa"]
+size = Vector2(1000, 2000)
 
 [node name="Node2D" type="Node2D"]
 
@@ -47,3 +50,8 @@ texture = ExtResource("7_rddte")
 [node name="背景設計-07" type="Sprite2D" parent="."]
 position = Vector2(-417, -18)
 texture = ExtResource("8_frreq")
+
+[node name="RadarMask" type="Sprite2D" parent="."]
+clip_children = 1
+position = Vector2(-404, -3)
+texture = SubResource("PlaceholderTexture2D_yqhfa")
