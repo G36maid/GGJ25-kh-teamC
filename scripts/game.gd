@@ -7,7 +7,6 @@ extends Node2D
 const LAN = 5
 const DILIVERER_COUNT = 5
 var deliverers := []
-var deliver_index = 0
 var enemy_start_spawning = false
 var remain_enemy
 var headquarter
@@ -87,9 +86,11 @@ func _on_enemy_timer_timeout() -> void:
 	enemy_start_spawning = true
 	remain_enemy -= 1
 	
-func send_command_to_deliverers(commands: Array) -> void:
-	deliverers[deliver_index].set_commands(commands)
-	deliver_index = (deliver_index + 1) % DILIVERER_COUNT
+func send_commands_to_deliverer(commands: Array) -> bool:
+	for d in deliverers:
+		if d.set_commands(commands):
+		    return true
+	return false
 	
 func get_x(lan: int) -> int:
 	var lan_width = get_viewport_rect().size.x / 2 / LAN
