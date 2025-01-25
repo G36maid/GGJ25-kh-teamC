@@ -89,7 +89,7 @@ func _on_enemy_timer_timeout() -> void:
 func send_commands_to_deliverer(commands: Array) -> bool:
 	for d in deliverers:
 		if d.set_commands(commands):
-		    return true
+			return true
 	return false
 	
 func get_x(lan: int) -> int:
