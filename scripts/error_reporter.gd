@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 
 func _on_send_invalid_cmd(cmd):
 	invalid_cmds.append(cmd)
-	error_msgs.append("[Error] "+cmd+" :")
+	error_msgs.append("[Error]   "+cmd+" :")
 
 func _on_parse_invalid_cmds():
 	text=""
