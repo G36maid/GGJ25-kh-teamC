@@ -55,6 +55,9 @@ text = "You Win!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Background" parent="." instance=ExtResource("7_wgsjo")]
+position = Vector2(960, 540)
+
 [node name="lose_text" type="Label" parent="."]
 visible = false
 offset_left = 960.0

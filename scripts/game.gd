@@ -79,11 +79,6 @@ func _process(delta: float) -> void:
 		$win_text.show()
 		$txt_input.hide()
 		return
-		
-	$enemy_remain.text = """Food: %d
-Ammo:%d
-Metal:%d
-""" % [headquarter.resource_food,
 
 	if $allys.get_child_count()>0:
 		for _dead_ally in $allys.get_children():
