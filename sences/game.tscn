@@ -18,7 +18,7 @@ headquarter_scene = ExtResource("5_aywmw")
 
 [node name="board" type="Node" parent="."]
 
-[node name="EnemyTimer" type="Timer" parent="."]
+[node name="enemy_timer" type="Timer" parent="."]
 
 [node name="enemys" type="Node" parent="."]
 
@@ -26,4 +26,28 @@ headquarter_scene = ExtResource("5_aywmw")
 
 [node name="deliverers" type="Node" parent="."]
 
-[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
+[node name="start_button" type="Button" parent="."]
+offset_left = 463.0
+offset_top = 393.0
+offset_right = 710.0
+offset_bottom = 514.0
+text = "Play"
+
+[node name="enemy_remain" type="Label" parent="."]
+offset_left = 376.0
+offset_top = 596.0
+offset_right = 477.0
+offset_bottom = 631.0
+
+[node name="win_text" type="Label" parent="."]
+visible = false
+offset_left = 480.0
+offset_top = 228.0
+offset_right = 695.0
+offset_bottom = 329.0
+text = "You Win!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="enemy_timer" to="." method="_on_enemy_timer_timeout"]
+[connection signal="pressed" from="start_button" to="." method="_start"]
