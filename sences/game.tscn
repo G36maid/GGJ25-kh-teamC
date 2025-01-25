@@ -35,7 +35,7 @@ text = "Play"
 
 [node name="enemy_remain" type="Label" parent="."]
 offset_left = 376.0
-offset_top = 596.0
+offset_top = 532.0
 offset_right = 477.0
 offset_bottom = 631.0
 
@@ -49,5 +49,8 @@ text = "You Win!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="hq_timer" type="Timer" parent="."]
+
 [connection signal="timeout" from="enemy_timer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="pressed" from="start_button" to="." method="_start"]
+[connection signal="timeout" from="hq_timer" to="." method="_on_hq_timer_timeout"]

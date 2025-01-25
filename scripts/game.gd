@@ -10,6 +10,7 @@ var deliverers := []
 var deliver_index = 0
 var enemy_start_spawning = false
 var remain_enemy
+var headquarter
 
 enum State {
 	BeforeStart,
@@ -27,6 +28,7 @@ func _start() -> void:
 	remain_enemy = 10
 	$start_button.hide()
 	$enemy_timer.start()
+	$hq_timer.start()
 	state = State.Start
 	
 	var hq_position = Vector2(
@@ -49,10 +51,10 @@ func _start() -> void:
 		ally.name = "ally" + str(i)
 		$allys.add_child(ally)
 		
-	var hq = headquarter_scene.instantiate()
-	hq.name = "hq"
-	hq.position = hq_position
-	add_child(hq)
+	headquarter = headquarter_scene.instantiate()
+	headquarter.name = "hq"
+	headquarter.position = hq_position
+	add_child(headquarter)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -65,7 +67,12 @@ func _process(delta: float) -> void:
 		$win_text.show()
 		return
 		
-	$enemy_remain.text = "Enemy Ramin: " + str(remain_enemy)
+	$enemy_remain.text = """Enemy Remain: %d
+Food: %d
+Ammo: %d
+Metal: %d
+""" % [remain_enemy, headquarter.resource_food, 
+	headquarter.resource_ammo, headquarter.resource_metal]
 
 
 func _on_enemy_timer_timeout() -> void:
@@ -79,7 +86,7 @@ func _on_enemy_timer_timeout() -> void:
 	)
 	$enemys.add_child(enemy)
 	enemy_start_spawning = true
-	remain_enemy = remain_enemy - 1
+	remain_enemy -= 1
 	
 func send_command_to_deliverers(commands: Array) -> void:
 	deliverers[deliver_index].set_commands(commands)
@@ -88,3 +95,9 @@ func send_command_to_deliverers(commands: Array) -> void:
 func get_x(lan: int) -> int:
 	var lan_width = get_viewport_rect().size.x / 2 / LAN
 	return lan_width * lan + lan_width / 2
+
+
+func _on_hq_timer_timeout() -> void:
+	headquarter.resource_food += 1
+	headquarter.resource_ammo += 1
+	headquarter.resource_metal += 1
