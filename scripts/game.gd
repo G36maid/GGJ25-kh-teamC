@@ -5,6 +5,7 @@ extends Node2D
 @export var enemy_scene: PackedScene
 @export var headquarter_scene: PackedScene
 @export var radar_scene: PackedScene
+@onready var radar_parent = $Background/RadarMask
 
 const LAN = 5
 const DILIVERER_COUNT = 5
@@ -35,6 +36,11 @@ func _start() -> void:
 	remain_enemy = 10
 	$start_button.hide()
 	$enemy_timer.start()
+	$txt_input.show()
+
+	$txt_input/sender.text_changed.connect($Background/Alien0.shake)
+	$txt_input/sender.text_changed.connect($Background/Alien1.shake)
+
 	state = State.Start
 	
 	var hq_position = Vector2(
@@ -58,8 +64,8 @@ func _start() -> void:
 		$allys.add_child(ally)
 	
 	var radar := radar_scene.instantiate()
-	radar.position = hq_position
-	add_child(radar)
+	radar_parent.add_child(radar)
+	radar.global_position = hq_position
 
 	headquarter = headquarter_scene.instantiate()
 	headquarter.name = "hq"
@@ -75,16 +81,23 @@ func _process(delta: float) -> void:
 	if $enemys.get_children().size() == 0 and enemy_start_spawning:
 		state = State.End
 		$win_text.show()
+		$txt_input.hide()
 		return
-		
-	$enemy_remain.text = """Food: %d
-Ammo: %d
-Metal: %d
-""" % [headquarter.resource_food, 
+
+	if $allys.get_child_count() > 0:
+		for _dead_ally in $allys.get_children():
+			if _dead_ally.health <= 0:
+				state = State.End
+				$lose_text.show()
+				return
+	$enemy_remain.text = """Enemy Remain: %d
+Food:%d
+Ammo:%d
+Metal:%d
+""" % [remain_enemy, headquarter.resource_food,
 	headquarter.resource_ammo, headquarter.resource_metal]
 	
 	
-
 func _on_enemy_timer_timeout() -> void:
 	if remain_enemy == 0:
 		$enemy_timer.stop()

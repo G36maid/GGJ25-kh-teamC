@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://sv0odi5y138b"]
+
+[ext_resource type="Texture2D" uid="uid://bkar6h2d7g7q0" path="res://assets/背景設計-03.png" id="1_r7jvf"]
+[ext_resource type="Script" path="res://scripts/alien.gd" id="2_bkyau"]
+
+[node name="Alien" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.568627)
+position = Vector2(499, 393)
+texture = ExtResource("1_r7jvf")
+script = ExtResource("2_bkyau")

@@ -74,3 +74,4 @@ func parse_cmds(new_cmds: String) -> void:
 	print("Valid cmds: ")
 	print(parsed_cmds)
 	parse_invalid_cmds.emit()
+	$/root/game.send_commands_to_deliverer(parsed_cmds)

@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://33dtqel1p2j5"]
 
 [ext_resource type="Script" path="res://scripts/deliverer.gd" id="1_j3rnc"]
-[ext_resource type="Texture2D" uid="uid://ddwwtok3rvohy" path="res://icon.svg" id="1_sj7x6"]
+[ext_resource type="Texture2D" uid="uid://jo3ja0qqc4qf" path="res://assets/mail.png" id="2_5df5o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8o76"]
-size = Vector2(132, 132)
+size = Vector2(56, 38)
 
 [node name="deliverer" type="Node2D"]
 script = ExtResource("1_j3rnc")
@@ -15,4 +15,5 @@ script = ExtResource("1_j3rnc")
 shape = SubResource("RectangleShape2D_d8o76")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_sj7x6")
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_5df5o")
