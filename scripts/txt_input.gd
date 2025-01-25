@@ -16,7 +16,7 @@ func _ready() -> void:
 	spc_ptn.compile(r"\s+")
 	var t = "       r      t    e   "
 	var result = spc_ptn.search(t)
-	if(result != null):
+	if (result != null):
 		# print("parsed string$%s^ends" %result.get_string())
 		# print(spc_ptn.sub(t, " ", true))
 		# print(spc_ptn.sub(t, "", true))
@@ -38,29 +38,29 @@ func _input(event: InputEvent) -> void:
 
 func parse_cmds(new_cmds: String) -> void:
 	var cmds: PackedStringArray = new_cmds.split("\n")
-	var empty_cmd_idx: int= cmds.find("") | cmds.find("\n");
-	var parsed_cmds:Array[PackedStringArray]
-	print("New cmds: %s" %new_cmds)
-	while(empty_cmd_idx != -1):
+	var empty_cmd_idx: int = cmds.find("") | cmds.find("\n");
+	var parsed_cmds: Array[PackedStringArray]
+	print("New cmds: %s"%new_cmds)
+	while (empty_cmd_idx != -1):
 		print("remove empty string")
 		cmds.remove_at(empty_cmd_idx);
-		cmds.resize(cmds.size()-1)
+		cmds.resize(cmds.size() - 1)
 		empty_cmd_idx = cmds.find("")
-	print("New cmds: %s" %new_cmds)
+	print("New cmds: %s"%new_cmds)
 
-	var invalid_cmd_indices:Array[int];
+	var invalid_cmd_indices: Array[int];
 	for i in cmds.size():
-		if(ret_ptn.search(cmds[i])):
-			print("return at %d" %i)
+		if (ret_ptn.search(cmds[i])):
+			print("return at %d"%i)
 			parsed_cmds.append(cmds[i].strip_edges().rsplit(" ", true, 0))
-		elif(goto_ptn.search(cmds[i])):
-			print("goto at %d" %i)
+		elif (goto_ptn.search(cmds[i])):
+			print("goto at %d"%i)
 			parsed_cmds.append(spc_ptn.sub(cmds[i].strip_edges(), " ", true).rsplit(" ", true, 1))
-		elif(grab_ptn.search(cmds[i])):
-			print("grab at %d" %i)
+		elif (grab_ptn.search(cmds[i])):
+			print("grab at %d"%i)
 			parsed_cmds.append(spc_ptn.sub(cmds[i].strip_edges(), " ", true).rsplit(" ", true, 2))
-		elif(drop_ptn.search(cmds[i])):
-			print("drop at %d" %i)
+		elif (drop_ptn.search(cmds[i])):
+			print("drop at %d"%i)
 			parsed_cmds.append(spc_ptn.sub(cmds[i].strip_edges(), " ", true).rsplit(" ", true, 2))
 		else:
 			invalid_cmd_indices.append(i)
@@ -70,13 +70,3 @@ func parse_cmds(new_cmds: String) -> void:
 		cmds.resize(cmds.size()-1)
 		
 	print(parsed_cmds)
-
-
-	# for cmd in cmds:
-	# 	print(cmd)
-# on msg editing : send signal
-# on msg sent : send signal
-		
-# cmd format: 
-# [action] [resource type] [quantity] <new_line>
-# [src] to [dest] <send_cmd> | <new_line>
