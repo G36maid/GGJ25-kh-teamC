@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://biabod8sfbms8"]
+
+[ext_resource type="Texture2D" uid="uid://ddwwtok3rvohy" path="res://icon.svg" id="1_hdyf2"]
+[ext_resource type="Script" path="res://scripts/ally.gd" id="1_jt7dk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l0b1g"]
+
+[node name="ally" type="Node2D"]
+script = ExtResource("1_jt7dk")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_l0b1g")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D/CollisionShape2D"]
+texture = ExtResource("1_hdyf2")
+
+[node name="RayCast2D" type="RayCast2D" parent="Area2D/CollisionShape2D/Sprite2D"]
+target_position = Vector2(0, -1200)
+collide_with_areas = true
+collide_with_bodies = false

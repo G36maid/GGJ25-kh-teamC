@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://da41yv3gdg54l"]
-
-[node name="deliverer" type="Node2D"]
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="Area2D/CollisionShape2D"]
