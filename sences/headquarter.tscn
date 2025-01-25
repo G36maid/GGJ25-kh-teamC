@@ -14,6 +14,7 @@ script = ExtResource("1_bm83o")
 shape = SubResource("CircleShape2D_rj8re")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D/CollisionShape2D"]
+visible = false
 texture = ExtResource("1_ow5ev")
 
 [node name="hq_timer" type="Timer" parent="."]
