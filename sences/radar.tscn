@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dtmmnn2yh6702"]
+
+[node name="radar" type="Node2D"]
