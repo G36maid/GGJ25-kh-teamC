@@ -20,3 +20,15 @@ texture = ExtResource("1_hdyf2")
 target_position = Vector2(0, -1200)
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Timer" type="Timer" parent="Area2D/CollisionShape2D/Sprite2D/RayCast2D"]
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+z_index = 1
+offset_left = -40.0
+offset_top = -121.0
+offset_right = 40.0
+offset_bottom = -67.0
+
+[connection signal="timeout" from="Area2D/CollisionShape2D/Sprite2D/RayCast2D/Timer" to="." method="_on_timer_timeout"]

@@ -8,6 +8,11 @@ extends Node2D
 
 const LAN = 5
 const DILIVERER_COUNT = 5
+const PANEL_WIDTH = 1100
+const PADDING = 70
+const ALLY_MIN_Y = 600
+const ALLY_MAX_Y = 800
+const HQ_Y = 988
 var deliverers := []
 var enemy_start_spawning = false
 var remain_enemy
@@ -33,8 +38,8 @@ func _start() -> void:
 	state = State.Start
 	
 	var hq_position = Vector2(
-		get_viewport_rect().size.x / 4,
-		get_viewport_rect().size.y * 0.9
+		PANEL_WIDTH / 2,
+		HQ_Y
 	)
 	for _i in DILIVERER_COUNT:
 		var deliverer = deliverer_scene.instantiate()
@@ -44,10 +49,9 @@ func _start() -> void:
 	
 	for i in LAN:
 		var ally = ally_scene.instantiate()
-		var y_size = get_viewport_rect().size.y
 		ally.position = Vector2(
 			get_x(i),
-			randf_range(y_size * 0.5, y_size * 0.8)
+			randf_range(ALLY_MIN_Y, ALLY_MAX_Y)
 		)
 		ally.name = "ally" + str(i)
 		#pass_to_enemy_ally_y[i] = ally.y
@@ -72,7 +76,12 @@ func _process(delta: float) -> void:
 		state = State.End
 		$win_text.show()
 		return
-		
+	if $allys.get_child_count()>0:
+		for _dead_ally in $allys.get_children():
+			if _dead_ally.health <=0:
+				state = State.End
+				$lose_text.show()
+				return
 	$enemy_remain.text = """Enemy Remain: %d
 Food:%d
 Ammo:%d
@@ -103,5 +112,5 @@ func send_commands_to_deliverer(commands: Array) -> bool:
 	return false
 	
 func get_x(lan: int) -> int:
-	var lan_width = get_viewport_rect().size.x / 2 / LAN
-	return lan_width * lan + lan_width / 2
+	var lan_width = (PANEL_WIDTH - PADDING * 2) / LAN
+	return lan_width * lan + lan_width / 2 + PADDING

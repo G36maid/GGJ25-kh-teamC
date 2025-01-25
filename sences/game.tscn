@@ -21,30 +21,45 @@ radar_scene = ExtResource("4_xu7sx")
 
 [node name="enemys" type="Node" parent="."]
 
+[node name="ally_texts" type="Node" parent="."]
+
 [node name="allys" type="Node" parent="."]
 
 [node name="deliverers" type="Node" parent="."]
 
 [node name="start_button" type="Button" parent="."]
-offset_left = 463.0
-offset_top = 393.0
-offset_right = 710.0
-offset_bottom = 514.0
+z_index = 3
+offset_left = 760.0
+offset_top = 600.0
+offset_right = 1160.0
+offset_bottom = 800.0
 text = "Play"
 
 [node name="enemy_remain" type="Label" parent="."]
-offset_left = 376.0
-offset_top = 532.0
-offset_right = 477.0
-offset_bottom = 631.0
+z_index = 1
+offset_left = 638.0
+offset_top = 936.0
+offset_right = 739.0
+offset_bottom = 1035.0
 
 [node name="win_text" type="Label" parent="."]
 visible = false
-offset_left = 480.0
-offset_top = 228.0
-offset_right = 695.0
-offset_bottom = 329.0
+z_index = 1
+offset_left = 860.0
+offset_top = 200.0
+offset_right = 1060.0
+offset_bottom = 300.0
 text = "You Win!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lose_text" type="Label" parent="."]
+visible = false
+offset_left = 960.0
+offset_top = 456.0
+offset_right = 1175.0
+offset_bottom = 557.0
+text = "Game Over!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
