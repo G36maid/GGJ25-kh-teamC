@@ -4,6 +4,7 @@ extends Node2D
 @export var speed: int = 30
 
 @onready var ally_parent = $/root/game/allys
+@onready var sprite = $Sprite2D
 
 enum State {
 	Idle,
@@ -17,23 +18,25 @@ var resource_metal: int = 0
 
 var _commands: Array = []
 var _next_target: String = "hq"
+var can_be_scanned: bool = true
 
 func _ready() -> void:
-	#set_commands([
-		#["grab", "food", "10"],
-		#["goto", "ally1"],
-		#["goto", "hq"],
-		#["grab", "food", "10"],
-		#["goto", "ally1"],
-		#["drop", "food", "10"],
-		#["grab", "ammo", "10"],
-		#["goto", "ally2"],
-		#["drop", "ammo", "10"],
-		#["grab", "metal", "10"],
-		#["goto", "hq"],
-		#["drop", "metal", "10"], # TODO: can I drop resource to hq?
-	#])
-	pass
+
+	sprite.visible = false
+
+func on_radar_scanned():
+	if not can_be_scanned:
+		return
+	can_be_scanned = false
+	get_tree().create_timer(3.0).timeout.connect(func(): can_be_scanned = true)
+
+	var s := sprite.duplicate()
+	(s as Sprite2D).position = position
+	(s as Sprite2D).visible = true
+	get_tree().create_timer(1.0).timeout.connect(Callable(s, "queue_free"))
+	get_tree().get_root().add_child(s)
+
+	print("Radar scanned.")
 
 func set_commands(commands: Array) -> bool:
 	"""

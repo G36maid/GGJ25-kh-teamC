@@ -5,6 +5,7 @@ extends Node2D
 @export var enemy_scene: PackedScene
 @export var headquarter_scene: PackedScene
 @export var radar_scene: PackedScene
+@onready var radar_parent = $Background/RadarMask
 
 const LAN = 5
 const DILIVERER_COUNT = 5
@@ -59,8 +60,8 @@ func _start() -> void:
 		$allys.add_child(ally)
 	
 	var radar := radar_scene.instantiate()
-	radar.position = hq_position
-	add_child(radar)
+	radar_parent.add_child(radar)
+	radar.global_position = hq_position
 
 	headquarter = headquarter_scene.instantiate()
 	headquarter.name = "hq"
@@ -80,13 +81,12 @@ func _process(delta: float) -> void:
 		return
 		
 	$enemy_remain.text = """Food: %d
-Ammo: %d
-Metal: %d
-""" % [headquarter.resource_food, 
+Ammo:%d
+Metal:%d
+""" % [headquarter.resource_food,
 	headquarter.resource_ammo, headquarter.resource_metal]
 	
 	
-
 func _on_enemy_timer_timeout() -> void:
 	if remain_enemy == 0:
 		$enemy_timer.stop()
