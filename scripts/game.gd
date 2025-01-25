@@ -84,6 +84,18 @@ func _process(delta: float) -> void:
 Ammo:%d
 Metal:%d
 """ % [headquarter.resource_food,
+
+	if $allys.get_child_count()>0:
+		for _dead_ally in $allys.get_children():
+			if _dead_ally.health <=0:
+				state = State.End
+				$lose_text.show()
+				return
+	$enemy_remain.text = """Enemy Remain: %d
+Food:%d
+Ammo:%d
+Metal:%d
+""" % [remain_enemy, headquarter.resource_food,
 	headquarter.resource_ammo, headquarter.resource_metal]
 	
 	

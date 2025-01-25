@@ -15,4 +15,15 @@ shape = SubResource("CircleShape2D_1ga2f")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D/CollisionShape2D"]
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_bwye2")
+texture = ExtResource("1_vj5km")
+
+[node name="RayCast2D" type="RayCast2D" parent="Area2D/CollisionShape2D/Sprite2D"]
+target_position = Vector2(0, 100)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Timer" type="Timer" parent="Area2D/CollisionShape2D/Sprite2D/RayCast2D"]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="Area2D/CollisionShape2D/Sprite2D/RayCast2D/Timer" to="." method="_on_timer_timeout"]
