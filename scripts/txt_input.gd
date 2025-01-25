@@ -7,13 +7,26 @@ var goto_ptn = RegEx.new()
 var grab_ptn = RegEx.new()
 var drop_ptn = RegEx.new()
 var spc_ptn  = RegEx.new()
+var highlighter = CodeHighlighter.new()
 
 func _ready() -> void:
+	syntax_highlighter = highlighter
 	ret_ptn.compile(r"return\s*$")
 	goto_ptn.compile(r"goto\s*(ally[0-4]|hq)\s*$")
 	grab_ptn.compile(r"grab\s*(food|ammo|metal)\s*([0-9]+)\s*$")
 	drop_ptn.compile(r"drop\s*(food|ammo|metal)\s*([0-9]+)\s*$")
 	spc_ptn.compile(r"\s+")
+	
+	var actions:PackedStringArray = ["return", "goto", "grab", "drop"]
+	var resources:PackedStringArray = ["food", "ammo", "metal"]
+	var locations:PackedStringArray = ["ally0", "ally1", "ally2", "ally3", "ally4", "hq"]
+	for str in actions:
+		highlighter.add_keyword_color(str, Color(0.9, 0.669, 0.657))
+	for str in resources:
+		highlighter.add_keyword_color(str, Color(0.594, 0.749, 0.94))
+	for str in locations:
+		highlighter.add_keyword_color(str, Color(0.795, 0.372, 0.423))
+	highlighter.set_number_color(Color(0.8, 0.644, 0.92))
 	
 	grab_focus()
 
