@@ -21,6 +21,8 @@ radar_scene = ExtResource("4_xu7sx")
 
 [node name="enemys" type="Node" parent="."]
 
+[node name="ally_texts" type="Node" parent="."]
+
 [node name="allys" type="Node" parent="."]
 
 [node name="deliverers" type="Node" parent="."]
@@ -45,6 +47,16 @@ offset_top = 228.0
 offset_right = 695.0
 offset_bottom = 329.0
 text = "You Win!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lose_text" type="Label" parent="."]
+visible = false
+offset_left = 960.0
+offset_top = 456.0
+offset_right = 1175.0
+offset_bottom = 557.0
+text = "Game Over!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
