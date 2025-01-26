@@ -19,4 +19,10 @@ texture = ExtResource("1_ow5ev")
 
 [node name="hq_timer" type="Timer" parent="."]
 
+[node name="Debug" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.958622, 0.488291, 0.48733, 1)
+z_index = 666
+texture = ExtResource("1_ow5ev")
+
 [connection signal="timeout" from="hq_timer" to="." method="_on_hq_timer_timeout"]
