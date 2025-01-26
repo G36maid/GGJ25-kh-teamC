@@ -4741,6 +4741,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="beforestart" type="Node2D" parent="."]
+visible = false
 position = Vector2(-14, 0)
 
 [node name="earth" type="AnimatedSprite2D" parent="beforestart"]
@@ -4765,8 +4766,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="remain_deliverers" parent="." instance=ExtResource("8_2i5qn")]
-position = Vector2(-90.9999, -654)
-scale = Vector2(0.2, 0.2)
+texture_filter = 1
+position = Vector2(523, -438)
+scale = Vector2(0.15, 0.15)
 
 [node name="txt_input" parent="." instance=ExtResource("8_iuril")]
 position = Vector2(-430, -568)
