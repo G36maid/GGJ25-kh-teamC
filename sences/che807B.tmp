@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccdby4ddc3f06"]
+
+[ext_resource type="FontFile" uid="uid://bx6ieiifxvnfd" path="res://assets/fonts/DejaVuSansMono/DejaVuSansMNerdFontMono-Bold.ttf" id="1_msohj"]
+[ext_resource type="Script" path="res://scripts/sheet.gd" id="2_sxfq3"]
+[ext_resource type="Script" path="res://scripts/sheet_label.gd" id="3_iv53m"]
+
+[sub_resource type="Theme" id="Theme_kpd8t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dp18l"]
+font = ExtResource("1_msohj")
+font_size = 20
+font_color = Color(0.97, 0.6499, 0.5335, 1)
+shadow_size = 0
+
+[node name="cheatsheet" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 606.0
+offset_top = 369.0
+offset_right = 752.0
+offset_bottom = 420.0
+theme = SubResource("Theme_kpd8t")
+theme_override_colors/font_color = Color(0.129519, 0.227084, 0.470579, 1)
+text = " 
+ CheatSheet 
+"
+label_settings = SubResource("LabelSettings_dp18l")
+vertical_alignment = 2
+script = ExtResource("3_iv53m")
+
+[node name="sheet" type="TextEdit" parent="."]
+offset_left = 64.0
+offset_top = 161.0
+offset_right = 752.0
+offset_bottom = 393.0
+theme_override_colors/font_color = Color(0.454902, 0.811765, 0.756863, 1)
+theme_override_fonts/font = ExtResource("1_msohj")
+theme_override_font_sizes/font_size = 25
+text = "==============Command Cheatsheet=============
+return "
+draw_tabs = true
+draw_spaces = true
+script = ExtResource("2_sxfq3")
