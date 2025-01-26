@@ -5,7 +5,9 @@ extends Node2D
 @export var enemy_scene: PackedScene
 @export var headquarter_scene: PackedScene
 @export var radar_scene: PackedScene
+
 @onready var radar_parent = $Background/RadarMask
+@onready var enemy_remain = $enemy_remain
 
 const LAN = 5
 const DILIVERER_COUNT = 5
@@ -17,7 +19,7 @@ const HQ_Y = 450
 
 var deliverers := []
 var enemy_start_spawning = false
-var remain_enemy := 50
+var remain_enemy := 500
 var remain_deliverers_count = 0
 var headquarter
 var pass_to_enemy_ally_y := []
@@ -70,6 +72,8 @@ func _start() -> void:
 	headquarter.position = hq_position
 	add_child(headquarter)
 
+	enemy_remain.get_parent().remove_child(enemy_remain)
+	headquarter.call_deferred("add_child", enemy_remain)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -88,7 +92,9 @@ func _process(delta: float) -> void:
 				state = State.End
 				$lose_text.show()
 				return
-	$enemy_remain.text = """Enemy Remain: %d
+
+	enemy_remain.position = Vector2(120, -60)
+	enemy_remain.text = """Enemy Remain: %d
 Food:%d
 Ammo:%d
 Metal:%d

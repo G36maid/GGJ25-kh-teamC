@@ -6,7 +6,7 @@ var health
 @onready var raycast = $RayCast2D
 
 var resource_food := 0
-var resource_ammo := 100
+var resource_ammo := 50
 var resource_metal := 0
 
 # Called when the node enters the scene tree for the first time.
@@ -29,9 +29,10 @@ func _on_timer_timeout() -> void:
 		resource_food -= temp
 
 	if (resource_ammo >= 0 and raycast.is_colliding()):
-		var target = raycast.get_collider()
-		target.get_parent().get_damage(10)
-		resource_ammo -= 1
+		var target = raycast.get_collider().get_parent()
+		if target.has_method("get_damage"):
+			target.get_damage(10)
+			resource_ammo -= 1
 
 func get_damage(damage: int):
 	health -= damage
@@ -44,7 +45,7 @@ func on_radar_scanned():
 	$ResourceLabel/VBoxContainer/FoodLabel/Label.text = str(resource_food)
 	$ResourceLabel/VBoxContainer/AmmonLabel/Label.text = str(resource_ammo)
 	$ResourceLabel/VBoxContainer/MetalLabel/Label.text = str(resource_metal)
-	print("ally ", name, " scanned")
+
 
 func start_float_animation():
 	var start := position
