@@ -2,29 +2,30 @@
 
 [ext_resource type="Script" path="res://scripts/ally.gd" id="1_jt7dk"]
 [ext_resource type="Texture2D" uid="uid://ce2ea70hwu7tb" path="res://assets/ally.png" id="2_6ieb5"]
-[ext_resource type="PackedScene" uid="uid://43mnxetiiq1n" path="res://sences/resource_label.tscn" id="3_44o0p"]
+[ext_resource type="PackedScene" path="res://sences/resource_label.tscn" id="3_44o0p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l0b1g"]
+radius = 80.0
 
 [node name="ally" type="Node2D"]
 script = ExtResource("1_jt7dk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 10
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_6ieb5")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_l0b1g")
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D/CollisionShape2D"]
-z_index = 10
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_6ieb5")
-
-[node name="RayCast2D" type="RayCast2D" parent="Area2D/CollisionShape2D/Sprite2D"]
+[node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, -1200)
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="Timer" type="Timer" parent="Area2D/CollisionShape2D/Sprite2D/RayCast2D"]
+[node name="Timer" type="Timer" parent="RayCast2D"]
 autostart = true
 
 [node name="ResourceLabel" parent="." instance=ExtResource("3_44o0p")]
@@ -33,4 +34,4 @@ offset_top = 73.0
 offset_right = 57.0
 offset_bottom = 157.0
 
-[connection signal="timeout" from="Area2D/CollisionShape2D/Sprite2D/RayCast2D/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="RayCast2D/Timer" to="." method="_on_timer_timeout"]

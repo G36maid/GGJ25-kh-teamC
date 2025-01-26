@@ -3,10 +3,10 @@ extends Node2D
 const max_health = 100
 var health
 
-@onready var raycast = $Area2D/CollisionShape2D/Sprite2D/RayCast2D
+@onready var raycast = $RayCast2D
 
 var resource_food := 0
-var resource_ammo := 100
+var resource_ammo := 50
 var resource_metal := 0
 
 # Called when the node enters the scene tree for the first time.
@@ -15,30 +15,24 @@ func _ready() -> void:
 
 	start_float_animation()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if (health < max_health && resource_food > 0):
-		health += 1
-		resource_food -= 1
-	
-	if (resource_ammo > 0 and raycast.is_colliding()):
-		var target = raycast.get_collider()
-		print(target)
-
+func _process(_delta: float) -> void:
+	pass
 
 func _on_timer_timeout() -> void:
-
 	if (health < max_health && resource_food > 10):
 		health += 10
 		resource_food -= 10
+
 	if (health < max_health && resource_food > 0):
 		var temp = max(max_health - health, resource_food)
 		health += temp
 		resource_food -= temp
+
 	if (resource_ammo >= 0 and raycast.is_colliding()):
-		var target = raycast.get_collider()
-		target.get_parent().get_damage(10)
-		resource_ammo -= 1
+		var target = raycast.get_collider().get_parent()
+		if target.has_method("get_damage"):
+			target.get_damage(10)
+			resource_ammo -= 1
 
 func get_damage(damage: int):
 	health -= damage
@@ -51,6 +45,7 @@ func on_radar_scanned():
 	$ResourceLabel/VBoxContainer/FoodLabel/Label.text = str(resource_food)
 	$ResourceLabel/VBoxContainer/AmmonLabel/Label.text = str(resource_ammo)
 	$ResourceLabel/VBoxContainer/MetalLabel/Label.text = str(resource_metal)
+
 
 func start_float_animation():
 	var start := position
