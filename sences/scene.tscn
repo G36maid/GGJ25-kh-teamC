@@ -3963,9 +3963,6 @@ sprite_frames = SubResource("SpriteFrames_qiw50")
 animation = &"pixelplanet_1080"
 autoplay = "pixelplanet_1080"
 
-[node name="Camera2D" type="Camera2D" parent="planets_animation"]
-zoom = Vector2(0.5, 0.5)
-
 [node name="背景設計-07" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(-417, -18)
