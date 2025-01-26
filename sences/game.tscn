@@ -1,4 +1,4 @@
-[gd_scene load_steps=682 format=3 uid="uid://bbn1jf8gr4l4n"]
+[gd_scene load_steps=683 format=3 uid="uid://bbn1jf8gr4l4n"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_bdvao"]
 [ext_resource type="PackedScene" uid="uid://cvp5d6dyf8mrw" path="res://sences/emeny.tscn" id="1_npdpo"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://6jft1chisiv3" path="res://assets/Tileset/earth_1080@60.png" id="13_62so3"]
 [ext_resource type="Texture2D" uid="uid://d38euhpkd0cpq" path="res://assets/Tileset/ice_planet_720@60.png" id="14_tlcbf"]
 [ext_resource type="Texture2D" uid="uid://bs43te4vc18c3" path="res://assets/Tileset/pixelplanet_1080.png" id="15_58b17"]
+[ext_resource type="AudioStream" uid="uid://dka8mgfrxbgu1" path="res://assets/watermarked_Strength_To_Last_Can_t_Stop_Waiting_background_vocals_3_55.mp3" id="21_4nhyd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_003mm"]
 atlas = ExtResource("7_5qvvw")
@@ -4777,6 +4778,10 @@ position = Vector2(-430, -568)
 position = Vector2(-862, -1412)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_4nhyd")
+autoplay = true
 
 [connection signal="timeout" from="enemy_timer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="pressed" from="start_button" to="." method="_start"]
