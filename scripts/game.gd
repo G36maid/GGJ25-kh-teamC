@@ -35,6 +35,7 @@ func _ready() -> void:
 	pass
 	
 func _start() -> void:
+	$beforestart.visible=false
 	remain_enemy = 10
 	$start_button.hide()
 	$enemy_timer.start()
