@@ -3867,7 +3867,7 @@ position = Vector2(13, -3)
 texture = ExtResource("4_lymkf")
 
 [node name="背景設計-04" type="Sprite2D" parent="."]
-z_index = 2
+z_index = 1
 position = Vector2(949, 189)
 texture = ExtResource("5_5qlin")
 
@@ -3877,7 +3877,7 @@ position = Vector2(120, 212)
 texture = ExtResource("6_gfq21")
 
 [node name="背景設計-02" type="Sprite2D" parent="."]
-z_index = 3
+z_index = 2
 position = Vector2(-401, 440)
 scale = Vector2(0.705696, 0.705696)
 texture = ExtResource("7_rddte")
