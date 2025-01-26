@@ -69,7 +69,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="txt_input" parent="." instance=ExtResource("8_iuril")]
-visible = false
 position = Vector2(539, -57)
 
 [connection signal="timeout" from="enemy_timer" to="." method="_on_enemy_timer_timeout"]

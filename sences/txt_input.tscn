@@ -1,27 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpxowp28xdmes"]
+[gd_scene load_steps=4 format=3 uid="uid://cpxowp28xdmes"]
 
 [ext_resource type="FontFile" uid="uid://bx6ieiifxvnfd" path="res://assets/fonts/DejaVuSansMono/DejaVuSansMNerdFontMono-Bold.ttf" id="1_ayquh"]
 [ext_resource type="Script" path="res://scripts/txt_input.gd" id="1_dpo2m"]
+[ext_resource type="Script" path="res://scripts/error_reporter.gd" id="3_5nj36"]
 
 [node name="txt_input" type="Node2D"]
 
-[node name="sender" type="TextEdit" parent="." node_paths=PackedStringArray("other_text_edit")]
+[node name="sender" type="TextEdit" parent="." node_paths=PackedStringArray("error_reporter")]
 offset_left = 623.0
 offset_top = 142.0
 offset_right = 1307.0
-offset_bottom = 633.0
+offset_bottom = 492.0
 theme_override_colors/background_color = Color(0.0758633, 0.0682, 0.11, 1)
 theme_override_colors/font_color = Color(0.456268, 0.811617, 0.757314, 1)
 theme_override_colors/caret_color = Color(0.732726, 0.758445, 0.897916, 1)
 theme_override_fonts/font = ExtResource("1_ayquh")
+theme_override_font_sizes/font_size = 30
 draw_tabs = true
 draw_spaces = true
 script = ExtResource("1_dpo2m")
-other_text_edit = NodePath("../receiver")
+error_reporter = NodePath("../error_reporter")
 
-[node name="receiver" type="TextEdit" parent="."]
-visible = false
-offset_left = 128.0
-offset_top = 427.0
-offset_right = 567.0
-offset_bottom = 520.0
+[node name="error_reporter" type="TextEdit" parent="." node_paths=PackedStringArray("cmd_sender")]
+offset_left = 623.0
+offset_top = 500.0
+offset_right = 1307.0
+offset_bottom = 732.0
+theme_override_colors/background_color = Color(0.0758633, 0.0682, 0.11, 1)
+theme_override_colors/font_color = Color(0.456268, 0.811617, 0.757314, 1)
+theme_override_colors/caret_color = Color(0.732726, 0.758445, 0.897916, 1)
+theme_override_fonts/font = ExtResource("1_ayquh")
+theme_override_font_sizes/font_size = 25
+draw_tabs = true
+draw_spaces = true
+script = ExtResource("3_5nj36")
+cmd_sender = NodePath("../sender")

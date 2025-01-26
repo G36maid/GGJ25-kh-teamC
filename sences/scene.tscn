@@ -3851,7 +3851,7 @@ size = Vector2(1000, 2000)
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(10, -6)
+position = Vector2(10, -3)
 texture = ExtResource("1_tk3ja")
 
 [node name="Alien0" parent="." instance=ExtResource("2_ry0k1")]
