@@ -87,7 +87,6 @@ func _process(delta: float) -> void:
 	if $enemys.get_children().size() == 0 and enemy_start_spawning:
 		state = State.End
 		$win_text.show()
-		$txt_input.hide()
 		return
 
 	if $allys.get_child_count() > 0:
