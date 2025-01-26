@@ -8,10 +8,6 @@ var success_msgs: PackedStringArray
 
 var highlighter = CodeHighlighter.new()
 
-var loc_err_ptn   = RegEx.new()
-var act_err_ptn   = RegEx.new()
-var resrc_err_ptn = RegEx.new()
-var fmt_err_ptn   = RegEx.new()
 var spc_ptn       = RegEx.new()
 var digit_ptn     = RegEx.new()
 var actions:PackedStringArray = ["return", "goto", "grab", "drop"]
