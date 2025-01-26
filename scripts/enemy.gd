@@ -1,5 +1,8 @@
 extends Node2D
 
+
+@export var speed: float = 10
+
 const max_health = 100
 var health
 
@@ -9,14 +12,11 @@ var health
 var can_be_scanned := true
 var lan
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	health = 100
-	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
-	position.y += 5
+	position.y += delta * speed
 
 func _on_timer_timeout() -> void:
 	if raycast.is_colliding():
@@ -28,7 +28,6 @@ func _on_timer_timeout() -> void:
 func get_damage(damage: int):
 	health -= damage
 	if health <= 0:
-		#print("game over")
 		queue_free()
 
 func on_radar_scanned():
