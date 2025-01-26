@@ -1,4 +1,4 @@
-[gd_scene load_steps=683 format=3 uid="uid://bbn1jf8gr4l4n"]
+[gd_scene load_steps=688 format=3 uid="uid://bbn1jf8gr4l4n"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_bdvao"]
 [ext_resource type="PackedScene" uid="uid://cvp5d6dyf8mrw" path="res://sences/emeny.tscn" id="1_npdpo"]
@@ -9,9 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://ccj1mmo2xfsch" path="res://assets/Tileset/Saturnian_360@60.png" id="7_5qvvw"]
 [ext_resource type="PackedScene" uid="uid://csphcir62ntax" path="res://sences/scene.tscn" id="7_wgsjo"]
 [ext_resource type="Texture2D" uid="uid://d1xja3xopqk8v" path="res://assets/Tileset/astroid2_720@60.png" id="8_1scy3"]
-[ext_resource type="PackedScene" path="res://sences/remain_deliverers.tscn" id="8_2i5qn"]
+[ext_resource type="PackedScene" uid="uid://dbkqirjd4845i" path="res://sences/remain_deliverers.tscn" id="8_2i5qn"]
+[ext_resource type="Script" path="res://scripts/start_button.gd" id="8_36ndb"]
 [ext_resource type="PackedScene" uid="uid://cpxowp28xdmes" path="res://sences/txt_input.tscn" id="8_iuril"]
-[ext_resource type="PackedScene" uid="uid://ccdby4ddc3f06" path="res://sences/cheatsheet.tscn" id="9_0e2rc"]
+[ext_resource type="PackedScene" path="res://sences/cheatsheet.tscn" id="9_0e2rc"]
 [ext_resource type="Texture2D" uid="uid://b0fji0t3bg7b4" path="res://assets/Tileset/astroid3_720@60.png" id="9_m7iqf"]
 [ext_resource type="Texture2D" uid="uid://bplcmwf5w6nxi" path="res://assets/Tileset/astroid4_720@60.png" id="10_yxlq8"]
 [ext_resource type="Texture2D" uid="uid://dq1kft2egmna0" path="res://assets/Tileset/astroid_720@60.png" id="11_r8hha"]
@@ -21,6 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://d38euhpkd0cpq" path="res://assets/Tileset/ice_planet_720@60.png" id="14_tlcbf"]
 [ext_resource type="Texture2D" uid="uid://bs43te4vc18c3" path="res://assets/Tileset/pixelplanet_1080.png" id="15_58b17"]
 [ext_resource type="AudioStream" uid="uid://dka8mgfrxbgu1" path="res://assets/watermarked_Strength_To_Last_Can_t_Stop_Waiting_background_vocals_3_55.mp3" id="21_4nhyd"]
+[ext_resource type="Shader" path="res://shaders/texture_button.gdshader" id="22_vimvf"]
+[ext_resource type="FontFile" uid="uid://dss28mf5a8aug" path="res://assets/fonts/AgaveNerdFontMono-Bold.ttf" id="23_36tgp"]
+[ext_resource type="Script" path="res://scripts/title.gd" id="23_wo51i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_003mm"]
 atlas = ExtResource("7_5qvvw")
@@ -4695,6 +4699,16 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_15rc0"]
+shader = ExtResource("22_vimvf")
+shader_parameter/background_color = Color(0.0196078, 0.105882, 0.14902, 1)
+shader_parameter/star_color = Color(1, 1, 1, 1)
+shader_parameter/nebula_color1 = Color(0.191673, 0.249123, 0.539713, 1)
+shader_parameter/nebula_color2 = Color(0.180392, 0.243137, 0.313726, 1)
+shader_parameter/star_density = 0.5
+shader_parameter/nebula_density = 0.5
+shader_parameter/rotation_speed = 0.1
+
 [node name="game" type="Node2D"]
 script = ExtResource("1_bdvao")
 deliverer_scene = ExtResource("3_m50hj")
@@ -4714,15 +4728,6 @@ radar_scene = ExtResource("4_xu7sx")
 [node name="allys" type="Node" parent="."]
 
 [node name="deliverers" type="Node" parent="."]
-
-[node name="start_button" type="Button" parent="."]
-z_index = 4
-offset_left = -197.0
-offset_top = -97.0
-offset_right = 195.0
-offset_bottom = 99.0
-text = "Play"
-icon_alignment = 1
 
 [node name="enemy_remain" type="Label" parent="."]
 z_index = 1
@@ -4783,5 +4788,44 @@ position = Vector2(-862, -1412)
 stream = ExtResource("21_4nhyd")
 autoplay = true
 
+[node name="ColorRect2" type="ColorRect" parent="."]
+z_index = 4
+material = SubResource("ShaderMaterial_15rc0")
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = -100.0
+
+[node name="TextEdit" type="TextEdit" parent="ColorRect2"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 28.0
+offset_right = 601.0
+offset_bottom = 230.0
+theme_override_fonts/font = ExtResource("23_36tgp")
+theme_override_font_sizes/font_size = 65
+text = " [Mail Commander]
+[bubble frontline]"
+script = ExtResource("23_wo51i")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 4
+material = SubResource("ShaderMaterial_15rc0")
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+
+[node name="start_button" type="Button" parent="ColorRect"]
+z_index = 4
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 100.0
+theme_override_fonts/font = ExtResource("23_36tgp")
+theme_override_font_sizes/font_size = 55
+text = "PLAY"
+icon_alignment = 1
+script = ExtResource("8_36ndb")
+
 [connection signal="timeout" from="enemy_timer" to="." method="_on_enemy_timer_timeout"]
-[connection signal="pressed" from="start_button" to="." method="_start"]
+[connection signal="pressed" from="ColorRect/start_button" to="." method="_start"]

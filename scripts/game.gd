@@ -38,6 +38,12 @@ func _ready():
 func _start() -> void:
 	$beforestart.visible = false
 	$start_button.hide()
+	$beforestart.visible=false
+	remain_enemy = 10
+	$ColorRect/start_button.hide()
+	$ColorRect2/TextEdit.hide()
+	$ColorRect2.hide()
+	$ColorRect.hide()
 	$enemy_timer.start()
 	$txt_input.show()
 

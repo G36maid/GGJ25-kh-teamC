@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dawi0r8x8w4yd"]
+[gd_scene load_steps=5 format=3 uid="uid://bdxb4a1kiuf71"]
 
 [ext_resource type="Shader" path="res://shaders/texture_button.gdshader" id="1_a3gfx"]
 [ext_resource type="FontFile" uid="uid://dss28mf5a8aug" path="res://assets/fonts/AgaveNerdFontMono-Bold.ttf" id="1_wq65a"]
@@ -23,6 +23,7 @@ offset_right = 191.0
 offset_bottom = 64.0
 
 [node name="Button" type="Button" parent="."]
+layout_mode = 0
 offset_left = 2.0
 offset_top = 1.0
 offset_right = 192.0
