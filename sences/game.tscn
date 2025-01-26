@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbn1jf8gr4l4n"]
+[gd_scene load_steps=11 format=3 uid="uid://bbn1jf8gr4l4n"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_bdvao"]
 [ext_resource type="PackedScene" uid="uid://cvp5d6dyf8mrw" path="res://sences/emeny.tscn" id="1_npdpo"]
@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://33dtqel1p2j5" path="res://sences/deliverer.tscn" id="3_m50hj"]
 [ext_resource type="PackedScene" uid="uid://dtmmnn2yh6702" path="res://sences/radar.tscn" id="4_xu7sx"]
 [ext_resource type="PackedScene" uid="uid://bsjo3u7jlotpr" path="res://sences/headquarter.tscn" id="5_aywmw"]
-[ext_resource type="PackedScene" uid="uid://b8rcbbuf1b2co" path="res://sences/scene.tscn" id="7_wgsjo"]
+[ext_resource type="PackedScene" uid="uid://csphcir62ntax" path="res://sences/scene.tscn" id="7_wgsjo"]
+[ext_resource type="PackedScene" uid="uid://dbkqirjd4845i" path="res://sences/remain_deliverers.tscn" id="8_2i5qn"]
 [ext_resource type="PackedScene" uid="uid://cpxowp28xdmes" path="res://sences/txt_input.tscn" id="8_iuril"]
-[ext_resource type="PackedScene" uid="uid://ccdby4ddc3f06" path="res://sences/cheatsheet.tscn" id="9_0e2rc"]
+[ext_resource type="PackedScene" path="res://sences/cheatsheet.tscn" id="9_0e2rc"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_bdvao")
@@ -69,15 +70,15 @@ text = "Game Over!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="remain_deliverers" parent="." instance=ExtResource("8_2i5qn")]
+position = Vector2(-90.9999, -654)
+scale = Vector2(0.2, 0.2)
+
 [node name="txt_input" parent="." instance=ExtResource("8_iuril")]
-position = Vector2(539, -57)
+position = Vector2(-430, -568)
 
 [node name="cheatsheet" parent="." instance=ExtResource("9_0e2rc")]
-position = Vector2(118, -878)
-
-[node name="remain_deliverers" parent="." instance=ExtResource("9_rer6c")]
-position = Vector2(459, -464)
-scale = Vector2(0.1, 0.1)
+position = Vector2(-862, -1412)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

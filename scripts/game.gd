@@ -13,7 +13,8 @@ const PANEL_WIDTH = 1100
 const PADDING = 70
 const ALLY_MIN_Y = 600
 const ALLY_MAX_Y = 800
-const HQ_Y = 988
+const HQ_Y = 0
+
 var deliverers := []
 var enemy_start_spawning = false
 var remain_enemy
