@@ -17,6 +17,7 @@ const HQ_Y = 988
 var deliverers := []
 var enemy_start_spawning = false
 var remain_enemy
+var remain_deliverers_count =0
 var headquarter
 var pass_to_enemy_ally_y := []
 
@@ -97,6 +98,11 @@ Metal:%d
 """ % [remain_enemy, headquarter.resource_food,
 	headquarter.resource_ammo, headquarter.resource_metal]
 	
+	remain_deliverers_count = 0
+	for d in deliverers:
+		if d.state == Deliverer.State.Idle:
+			remain_deliverers_count += 1
+	$remain_deliverers.get_child(0).text = str( remain_deliverers_count )
 	
 func _on_enemy_timer_timeout() -> void:
 	if remain_enemy == 0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=559 format=3 uid="uid://csphcir62ntax"]
+[gd_scene load_steps=560 format=3 uid="uid://csphcir62ntax"]
 
 [ext_resource type="Texture2D" uid="uid://dfakj7qw2kxe2" path="res://assets/背景設計_工作區域 1.png" id="1_tk3ja"]
 [ext_resource type="PackedScene" uid="uid://sv0odi5y138b" path="res://sences/alien.tscn" id="2_ry0k1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cvmct4wis7j8f" path="res://assets/背景設計-04.png" id="5_5qlin"]
 [ext_resource type="Texture2D" uid="uid://dheyeo7v1w8wc" path="res://assets/背景設計-05.png" id="6_gfq21"]
 [ext_resource type="Texture2D" uid="uid://bs43te4vc18c3" path="res://assets/Tileset/pixelplanet_1080.png" id="7_52ja3"]
+[ext_resource type="Script" path="res://scripts/planets_animation.gd" id="7_fmsn1"]
 [ext_resource type="Texture2D" uid="uid://di8fdmj3rvk0b" path="res://assets/背景設計-02.png" id="7_rddte"]
 [ext_resource type="Texture2D" uid="uid://beqov5ccq0240" path="res://assets/背景設計-07.png" id="8_frreq"]
 [ext_resource type="Texture2D" uid="uid://ccj1mmo2xfsch" path="res://assets/Tileset/Saturnian_360@60.png" id="8_jpylh"]
@@ -2362,7 +2363,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Saturnian_360@60",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -3472,7 +3473,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"earth_1080@60",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -3842,7 +3843,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"pixelplanet_1080",
-"speed": 5.0
+"speed": 7.0
 }]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yqhfa"]
@@ -3871,7 +3872,8 @@ position = Vector2(949, 189)
 texture = ExtResource("5_5qlin")
 
 [node name="背景設計-05" type="Sprite2D" parent="."]
-position = Vector2(909, -428)
+z_index = 1
+position = Vector2(120, 212)
 texture = ExtResource("6_gfq21")
 
 [node name="背景設計-02" type="Sprite2D" parent="."]
@@ -3881,48 +3883,40 @@ scale = Vector2(0.705696, 0.705696)
 texture = ExtResource("7_rddte")
 
 [node name="planets_animation" type="Node2D" parent="."]
+script = ExtResource("7_fmsn1")
 
-[node name="planet" type="AnimatedSprite2D" parent="planets_animation"]
+[node name="astroid1" type="AnimatedSprite2D" parent="planets_animation"]
 texture_filter = 1
-position = Vector2(-885, -443)
-scale = Vector2(0.37037, 0.37037)
-sprite_frames = SubResource("SpriteFrames_qiw50")
-animation = &"ice_planet_720@60"
-autoplay = "ice_planet_720@60"
-
-[node name="planet2" type="AnimatedSprite2D" parent="planets_animation"]
-texture_filter = 1
-position = Vector2(-144, 39)
-scale = Vector2(0.37037, 0.37037)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_qiw50")
 animation = &"astroid_720@60"
 autoplay = "astroid_720@60"
 
-[node name="planet3" type="AnimatedSprite2D" parent="planets_animation"]
+[node name="astroid2" type="AnimatedSprite2D" parent="planets_animation"]
 texture_filter = 1
-position = Vector2(-552, -312)
-scale = Vector2(0.37037, 0.37037)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_qiw50")
 animation = &"astroid3_720@60"
 autoplay = "astroid3_720@60"
 
-[node name="planet4" type="AnimatedSprite2D" parent="planets_animation"]
+[node name="astroid3" type="AnimatedSprite2D" parent="planets_animation"]
 texture_filter = 1
-position = Vector2(-474, 54)
-scale = Vector2(0.37037, 0.37037)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_qiw50")
 animation = &"astroid4_720@60"
 autoplay = "astroid3_720@60"
 
-[node name="planet5" type="AnimatedSprite2D" parent="planets_animation"]
+[node name="astroid4" type="AnimatedSprite2D" parent="planets_animation"]
 texture_filter = 1
-position = Vector2(-703, -91)
-scale = Vector2(0.37037, 0.37037)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_qiw50")
 animation = &"astroid2_720@60"
 autoplay = "astroid2_720@60"
 
-[node name="planet6" type="AnimatedSprite2D" parent="planets_animation"]
+[node name="planets_animation2" type="Node2D" parent="."]
+
+[node name="planet6" type="AnimatedSprite2D" parent="planets_animation2"]
+visible = false
 z_index = 2
 texture_filter = 1
 position = Vector2(140.875, 235.875)
@@ -3931,15 +3925,16 @@ sprite_frames = SubResource("SpriteFrames_qiw50")
 animation = &"earth_1080@60"
 autoplay = "earth_1080@60"
 
-[node name="planet7" type="AnimatedSprite2D" parent="planets_animation"]
+[node name="planet7" type="AnimatedSprite2D" parent="planets_animation2"]
+modulate = Color(1, 1, 1, 0.47451)
 texture_filter = 1
-position = Vector2(768, 102)
-scale = Vector2(0.37037, 0.37037)
+position = Vector2(303, 313)
+scale = Vector2(0.234259, 0.234259)
 sprite_frames = SubResource("SpriteFrames_qiw50")
 animation = &"Saturnian_360@60"
 autoplay = "Saturnian_360@60"
 
-[node name="planet8" type="AnimatedSprite2D" parent="planets_animation"]
+[node name="planet8" type="AnimatedSprite2D" parent="planets_animation2"]
 texture_filter = 1
 position = Vector2(-804, 146)
 scale = Vector2(0.270645, 0.270645)
@@ -3947,18 +3942,11 @@ sprite_frames = SubResource("SpriteFrames_qiw50")
 animation = &"astroid3_720@60"
 autoplay = "astroid3_720@60"
 
-[node name="planet9" type="AnimatedSprite2D" parent="planets_animation"]
+[node name="planet10" type="AnimatedSprite2D" parent="planets_animation2"]
 texture_filter = 1
-position = Vector2(26, -486)
-scale = Vector2(0.654814, 0.654814)
-sprite_frames = SubResource("SpriteFrames_qiw50")
-animation = &"blackhole_720@60"
-autoplay = "blackhole_720@60"
-
-[node name="planet10" type="AnimatedSprite2D" parent="planets_animation"]
-texture_filter = 1
-position = Vector2(-416, 782)
-scale = Vector2(1.02114, 1.02114)
+position = Vector2(-654, 441)
+rotation = 0.733038
+scale = Vector2(1.02986, 1.02986)
 sprite_frames = SubResource("SpriteFrames_qiw50")
 animation = &"pixelplanet_1080"
 autoplay = "pixelplanet_1080"
@@ -3969,6 +3957,7 @@ position = Vector2(-417, -18)
 texture = ExtResource("8_frreq")
 
 [node name="RadarMask" type="Sprite2D" parent="."]
+visible = false
 clip_children = 1
 position = Vector2(-404, -3)
 texture = SubResource("PlaceholderTexture2D_yqhfa")

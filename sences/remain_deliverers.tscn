@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbkqirjd4845i"]
+
+[ext_resource type="Texture2D" uid="uid://jo3ja0qqc4qf" path="res://assets/mail.png" id="1_684e6"]
+
+[node name="remain_deliverers" type="Node2D"]
+
+[node name="remain_deliverers" type="Label" parent="."]
+offset_left = -44.0
+offset_top = -398.0
+offset_right = -15.0
+offset_bottom = -375.0
+scale = Vector2(20, 20)
+text = "1
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-239, -173)
+scale = Vector2(0.462716, 0.462716)
+texture = ExtResource("1_684e6")
