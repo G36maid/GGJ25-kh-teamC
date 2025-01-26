@@ -36,8 +36,6 @@ func _ready():
 	$beforestart.visible = true
 
 func _start() -> void:
-	$beforestart.visible = false
-	$start_button.hide()
 	$beforestart.visible=false
 	remain_enemy = 10
 	$ColorRect/start_button.hide()
