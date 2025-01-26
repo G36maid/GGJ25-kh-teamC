@@ -37,7 +37,9 @@ func on_radar_scanned():
 	get_tree().create_timer(3.0).timeout.connect(func(): can_be_scanned = true)
 
 	var s := sprite.duplicate() as Sprite2D
+	var lifetime := 1
 	s.visible = true
 	s.position = position
-	get_tree().create_timer(1).timeout.connect(func(): s.queue_free())
+	get_tree().create_timer(lifetime).timeout.connect(func(): s.queue_free())
 	get_tree().get_root().add_child(s)
+	s.create_tween().tween_property(s, "modulate", Color.TRANSPARENT, lifetime)
