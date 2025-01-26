@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdxb4a1kiuf71"]
+
+[ext_resource type="Shader" path="res://shaders/texture_button.gdshader" id="1_a3gfx"]
+[ext_resource type="FontFile" uid="uid://dss28mf5a8aug" path="res://assets/fonts/AgaveNerdFontMono-Bold.ttf" id="1_wq65a"]
+[ext_resource type="Script" path="res://scripts/start_button.gd" id="2_nkl5x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kyuei"]
+shader = ExtResource("1_a3gfx")
+shader_parameter/background_color = Color(0.0198279, 0.107294, 0.147922, 1)
+shader_parameter/star_color = Color(1, 1, 1, 1)
+shader_parameter/nebula_color1 = Color(0.163346, 0.669177, 0.623333, 1)
+shader_parameter/nebula_color2 = Color(0.179777, 0.243844, 0.315151, 1)
+shader_parameter/star_density = 0.557
+shader_parameter/nebula_density = 0.84
+shader_parameter/rotation_speed = 0.311
+
+[node name="ColorRect" type="ColorRect"]
+z_as_relative = false
+material = SubResource("ShaderMaterial_kyuei")
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 191.0
+offset_bottom = 64.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 192.0
+offset_bottom = 65.0
+theme_override_fonts/font = ExtResource("1_wq65a")
+theme_override_font_sizes/font_size = 55
+text = "START"
+script = ExtResource("2_nkl5x")

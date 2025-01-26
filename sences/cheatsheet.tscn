@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0e0gg76so5w7"]
+
+[ext_resource type="Script" path="res://scripts/sheet_parent.gd" id="1_k7seo"]
+[ext_resource type="FontFile" uid="uid://bx6ieiifxvnfd" path="res://assets/fonts/DejaVuSansMono/DejaVuSansMNerdFontMono-Bold.ttf" id="1_msohj"]
+[ext_resource type="Script" path="res://scripts/sheet.gd" id="2_sxfq3"]
+[ext_resource type="Script" path="res://scripts/sheet_label.gd" id="3_iv53m"]
+
+[sub_resource type="Theme" id="Theme_kpd8t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dp18l"]
+font = ExtResource("1_msohj")
+font_size = 20
+font_color = Color(0.97, 0.6499, 0.5335, 1)
+shadow_size = 0
+
+[node name="cheatsheet" type="Node2D"]
+script = ExtResource("1_k7seo")
+
+[node name="label" type="Label" parent="."]
+offset_left = 634.0
+offset_top = 906.0
+offset_right = 780.0
+offset_bottom = 957.0
+theme = SubResource("Theme_kpd8t")
+theme_override_colors/font_color = Color(0.129519, 0.227084, 0.470579, 1)
+text = " 
+ CheatSheet 
+"
+label_settings = SubResource("LabelSettings_dp18l")
+vertical_alignment = 2
+script = ExtResource("3_iv53m")
+
+[node name="sheet" type="TextEdit" parent="."]
+offset_left = 94.0
+offset_top = 86.0
+offset_right = 780.0
+offset_bottom = 930.0
+theme_override_colors/font_color = Color(0.454902, 0.811765, 0.756863, 1)
+theme_override_fonts/font = ExtResource("1_msohj")
+theme_override_font_sizes/font_size = 25
+text = "
+
+===============Command Format================
+ goto [location]
+ grab [resource] [quantity]
+ drop [resource] [quantity]
+=============Valid Variable Value============
+ [location]
+	\"ally0\", \"ally1\", \"ally2\", \"ally3\", 
+	\"ally4\", \"hq\"
+ [resource]
+	\"food\", \"ammo\", \"metal\"
+ [quantity]
+	numbers: 1, 34, 999 ...
+==================Examples===================
+ goto ally1
+ drop food 52
+ grab ammo 90
+=============How To Send Commands============
+ Shift+Enter: new line
+ Enter: send commands
+"
+draw_tabs = true
+draw_spaces = true
+script = ExtResource("2_sxfq3")
+
+[connection signal="mouse_entered" from="label" to="." method="_on_label_mouse_entered"]
+[connection signal="mouse_exited" from="label" to="." method="_on_label_mouse_exited"]
+[connection signal="mouse_entered" from="sheet" to="." method="_on_sheet_mouse_entered"]
+[connection signal="mouse_exited" from="sheet" to="." method="_on_sheet_mouse_exited"]
