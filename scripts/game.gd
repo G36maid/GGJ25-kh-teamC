@@ -17,7 +17,7 @@ const HQ_Y = 450
 
 var deliverers := []
 var enemy_start_spawning = false
-var remain_enemy
+var remain_enemy := 50
 var remain_deliverers_count = 0
 var headquarter
 var pass_to_enemy_ally_y := []
@@ -35,7 +35,6 @@ func _ready():
 
 func _start() -> void:
 	$beforestart.visible = false
-	remain_enemy = 10
 	$start_button.hide()
 	$enemy_timer.start()
 	$txt_input.show()

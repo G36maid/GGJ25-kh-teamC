@@ -6,7 +6,7 @@ extends Node2D
 const max_health = 100
 var health
 
-@onready var raycast = $Area2D/CollisionShape2D/Sprite2D/RayCast2D
+@onready var raycast = $RayCast2D
 @onready var sprite = $Area2D/CollisionShape2D/Sprite2D
 
 var can_be_scanned := true
@@ -28,7 +28,20 @@ func _on_timer_timeout() -> void:
 func get_damage(damage: int):
 	health -= damage
 	if health <= 0:
+		create_dead_sprite()
 		queue_free()
+
+func create_dead_sprite():
+	var dead_modulate := Color("ff0000")
+	var s := sprite.duplicate() as Sprite2D
+	var lifetime := 1
+	s.visible = true
+	s.position = position
+	s.modulate = dead_modulate
+	get_tree().create_timer(lifetime).timeout.connect(func(): s.queue_free())
+	get_tree().get_root().add_child(s)
+	s.create_tween().tween_property(s, "modulate", Color.TRANSPARENT, lifetime)
+
 
 func on_radar_scanned():
 	if not can_be_scanned:
