@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://43mnxetiiq1n"]
+
+[ext_resource type="Texture2D" uid="uid://cbywekn2d7o08" path="res://assets/icons/food.png" id="1_otytb"]
+[ext_resource type="Texture2D" uid="uid://cwlpmw46rqefv" path="res://assets/icons/ammo.png" id="2_62rx5"]
+[ext_resource type="Texture2D" uid="uid://ck4lkkjgds6u4" path="res://assets/icons/metal.png" id="3_yc4ti"]
+
+[node name="ResourceLabel" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -40.0
+offset_top = -121.0
+offset_right = 40.0
+offset_bottom = -40.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.207843, 0.207843, 0.207843, 0.501961)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FoodLabel" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/FoodLabel"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+texture = ExtResource("1_otytb")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/FoodLabel"]
+layout_mode = 2
+text = "????"
+
+[node name="AmmonLabel" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/AmmonLabel"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+texture = ExtResource("2_62rx5")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/AmmonLabel"]
+layout_mode = 2
+text = "????"
+
+[node name="MetalLabel" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MetalLabel"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+texture = ExtResource("3_yc4ti")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/MetalLabel"]
+layout_mode = 2
+text = "????"
