@@ -1,12 +1,12 @@
 extends TextEdit
 
-@export var error_reporter:TextEdit = null
+@export var error_reporter: TextEdit = null
 
-var ret_ptn  = RegEx.new()
+var ret_ptn = RegEx.new()
 var goto_ptn = RegEx.new()
 var grab_ptn = RegEx.new()
 var drop_ptn = RegEx.new()
-var spc_ptn  = RegEx.new()
+var spc_ptn = RegEx.new()
 var highlighter = CodeHighlighter.new()
 
 signal send_invalid_cmd(invalid_cmd)
@@ -21,9 +21,9 @@ func _ready() -> void:
 	drop_ptn.compile(r"drop\s*(food|ammo|metal)\s*([0-9]+)\s*$")
 	spc_ptn.compile(r"\s+")
 	
-	var actions:PackedStringArray = ["return", "goto", "grab", "drop"]
-	var resources:PackedStringArray = ["food", "ammo", "metal"]
-	var locations:PackedStringArray = ["ally0", "ally1", "ally2", "ally3", "ally4", "hq"]
+	var actions: PackedStringArray = ["return", "goto", "grab", "drop"]
+	var resources: PackedStringArray = ["food", "ammo", "metal"]
+	var locations: PackedStringArray = ["ally0", "ally1", "ally2", "ally3", "ally4", "hq"]
 	for str in actions:
 		highlighter.add_keyword_color(str, Color(0.9, 0.669, 0.657))
 	for str in resources:
@@ -47,7 +47,7 @@ func _input(event: InputEvent) -> void:
 
 func parse_cmds(new_cmds: String) -> void:
 	var cmds: PackedStringArray = new_cmds.split("\n")
-	var empty_cmd_idx: int = cmds.find("") 
+	var empty_cmd_idx: int = cmds.find("")
 	var parsed_cmds: Array[PackedStringArray]
 	var cmd_invalid: bool = false;
 
@@ -80,3 +80,4 @@ func parse_cmds(new_cmds: String) -> void:
 	print(parsed_cmds)
 	parse_invalid_cmds.emit()
 	$/root/game.send_commands_to_deliverer(parsed_cmds)
+	parse_invalid_cmds.emit()
