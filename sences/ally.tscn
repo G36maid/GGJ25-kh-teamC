@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://biabod8sfbms8"]
+[gd_scene load_steps=5 format=3 uid="uid://biabod8sfbms8"]
 
 [ext_resource type="Script" path="res://scripts/ally.gd" id="1_jt7dk"]
 [ext_resource type="Texture2D" uid="uid://ce2ea70hwu7tb" path="res://assets/ally.png" id="2_6ieb5"]
+[ext_resource type="PackedScene" uid="uid://43mnxetiiq1n" path="res://sences/resource_label.tscn" id="3_44o0p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l0b1g"]
 
@@ -26,11 +27,10 @@ collide_with_bodies = false
 [node name="Timer" type="Timer" parent="Area2D/CollisionShape2D/Sprite2D/RayCast2D"]
 autostart = true
 
-[node name="Label" type="Label" parent="."]
-z_index = 1
-offset_left = -40.0
-offset_top = -121.0
-offset_right = 40.0
-offset_bottom = -67.0
+[node name="ResourceLabel" parent="." instance=ExtResource("3_44o0p")]
+offset_left = -58.0
+offset_top = 73.0
+offset_right = 57.0
+offset_bottom = 157.0
 
 [connection signal="timeout" from="Area2D/CollisionShape2D/Sprite2D/RayCast2D/Timer" to="." method="_on_timer_timeout"]
