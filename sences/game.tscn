@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ccj1mmo2xfsch" path="res://assets/Tileset/Saturnian_360@60.png" id="7_5qvvw"]
 [ext_resource type="PackedScene" uid="uid://csphcir62ntax" path="res://sences/scene.tscn" id="7_wgsjo"]
 [ext_resource type="Texture2D" uid="uid://d1xja3xopqk8v" path="res://assets/Tileset/astroid2_720@60.png" id="8_1scy3"]
-[ext_resource type="PackedScene" path="res://sences/remain_deliverers.tscn" id="8_2i5qn"]
+[ext_resource type="PackedScene" uid="uid://dbkqirjd4845i" path="res://sences/remain_deliverers.tscn" id="8_2i5qn"]
 [ext_resource type="Script" path="res://scripts/start_button.gd" id="8_36ndb"]
 [ext_resource type="PackedScene" uid="uid://cpxowp28xdmes" path="res://sences/txt_input.tscn" id="8_iuril"]
 [ext_resource type="PackedScene" uid="uid://ccdby4ddc3f06" path="res://sences/cheatsheet.tscn" id="9_0e2rc"]
