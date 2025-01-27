@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/ally.gd" id="1_jt7dk"]
 [ext_resource type="Texture2D" uid="uid://ce2ea70hwu7tb" path="res://assets/ally.png" id="2_6ieb5"]
-[ext_resource type="PackedScene" path="res://sences/resource_label.tscn" id="3_44o0p"]
+[ext_resource type="PackedScene" uid="uid://43mnxetiiq1n" path="res://sences/resource_label.tscn" id="3_44o0p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l0b1g"]
 radius = 80.0
