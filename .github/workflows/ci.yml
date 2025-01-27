@@ -13,10 +13,15 @@ jobs:
   export:
     strategy:
       matrix:
-        platform: [windows, linux, mac]
+        export: 
+          - { platform: windows, ext: exe }
+          - { platform: linux, ext: x86_64 }
+          - { platform: mac, ext: zip }
     runs-on: ubuntu-latest
     container:
       image: barichello/godot-ci:4.3
+    env:
+      PLATFORM: ${{ matrix.export.platform }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,11 +33,13 @@ jobs:
           mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
       - name: Build
         run: |
-          mkdir -v -p build/${{ matrix.platform }}
+          mkdir -v -p build/$PLATFORM
           EXPORT_DIR="$(readlink -f build)"
-          godot --headless --verbose --export-release "${{ matrix.platform }}" "$EXPORT_DIR/${{ matrix.platform }}/$EXPORT_NAME"
+          godot --headless --verbose \
+            --export-release "$PLATFORM" \
+            "$EXPORT_DIR/$PLATFORM/$EXPORT_NAME.${{ matrix.export.ext }}"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.platform }}
-          path: build/${{ matrix.platform }}
+          name: ${{ env.PLATFORM }}
+          path: build/${{ env.PLATFORM }}
